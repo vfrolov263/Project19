@@ -27,9 +27,10 @@ namespace Assets._Project.Scripts.Player.Interaction
         private float _checkForInteractionAbilityDelay = Settings.Settings.CHECK_INTERACTION_INTERVAL;
         private CancellationTokenSource _cts;
 
-        public InteractionHandler(IInteractor interactor = null)
+        public InteractionHandler(IInteractor interactor = null, LayerMask interactionLayer = default)
         {
             _interactor = interactor ?? CameraInteractor.Default;
+            _interactionLayer = (int)interactionLayer == 0 ? (LayerMask)(~0) : interactionLayer;
             _cts = new();
             _ = CheckForInteractionAbilityRoutine();
         }
