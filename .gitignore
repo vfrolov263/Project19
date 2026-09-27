@@ -76,6 +76,8 @@ crashlytics-build.properties
 
 # Test data
 **/[Tt]est
+**/[Tt]est.meta
 
 # Design data
 **/[Dd]esign
+**/[Dd]esign.meta
