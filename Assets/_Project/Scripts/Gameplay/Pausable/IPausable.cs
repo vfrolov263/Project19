@@ -2,6 +2,6 @@ namespace Assets._Project.Scripts.Gameplay.Pausable
 {
     public interface IPausable
     {
-        bool Paused { set; }
+        bool Paused { get; set; }
     }
 }

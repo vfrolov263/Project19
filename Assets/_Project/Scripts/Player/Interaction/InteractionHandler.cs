@@ -42,10 +42,26 @@ namespace Assets._Project.Scripts.Player.Interaction
             _cts = null;
         }
 
-        public void TryUse()
+        public bool TryUse()
         {
             if (FindInteractable(out IInteractable interactable))
+            {
                 interactable.Interact();
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool TryUse(out IInteractable interactable)
+        {
+            if (FindInteractable(out interactable))
+            {
+                interactable.Interact();
+                return true;
+            }
+
+            return false;
         }
 
         private async Awaitable CheckForInteractionAbilityRoutine()
@@ -82,8 +98,9 @@ namespace Assets._Project.Scripts.Player.Interaction
         private bool FindInteractable(out IInteractable interactable)
         {
             interactable = null;
+            //Debug.DrawRay(_interactor.Ray.origin, _interactor.Ray.direction, Color.red, 1f);
             return Physics.Raycast(_interactor.Ray, out var hit, 
-                Settings.Settings.MAX_INTERACTION_DISTANCE, _interactionLayer) &&
+                Settings.Settings.MAX_INTERACTION_DISTANCE, _interactor.Mask) &&
                 hit.collider.TryGetComponent(out interactable) && 
                 hit.distance <= interactable.InteractionDistance;
         }

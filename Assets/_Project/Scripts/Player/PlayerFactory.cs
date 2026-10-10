@@ -1,5 +1,8 @@
-using Assets._Project.Scripts.Player.AdditionalControlls;
-using DyrdaDev.FirstPersonController;
+using Assets._Project.Scripts.Gameplay.Animation;
+using Assets._Project.Scripts.Player.Controlls;
+using Assets._Project.Scripts.Player.Interaction;
+using Assets._Project.Scripts.Player.View;
+using Unity.Cinemachine;
 using UnityEngine;
 
 namespace Assets._Project.Scripts.Player
@@ -10,17 +13,17 @@ namespace Assets._Project.Scripts.Player
         {
             GameObject player = GameObject.Instantiate(playerPrefab, transform.position, transform.rotation);
 
-            if (!player.TryGetComponent(out FirstPersonController fpController))
+            if (!player.TryGetComponent(out FirstPersonInputController controller))
             {
-                fpController = player.AddComponent<FirstPersonController>();
+                controller = player.AddComponent<FirstPersonInputController>();
             }
 
-            if (!player.TryGetComponent(out AdditionalController addController))
-            {
-                addController = player.AddComponent<AdditionalController>();
-            }
+            Camera _glassesCam = Camera.main;
 
-            return new(fpController, addController, new(), new(null, null));
+            return new(controller, new(), new(_glassesCam.GetComponentInChildren<Animator>(),
+                new CameraInteractor(_glassesCam, mask: LayerMask.GetMask("AlterWorld"), rayOffset: new(.5f, .5f)),
+                _glassesCam.GetComponentInChildren<AnimationEventsHandler>(), "readyToUse", "motionStart", "motionEnd"),
+                player.GetComponentInChildren<CinemachineCamera>(), player.GetComponentInChildren<ClueController>());
         }
     }
 }
