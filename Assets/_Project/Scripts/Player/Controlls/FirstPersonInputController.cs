@@ -24,6 +24,8 @@ namespace Assets._Project.Scripts.Player.Controlls
         public override IObservable<Vector2> Look => _look;
         private IObservable<Vector2> _look;
 
+        public IObservable<Vector2> ExamineMove { get; private set; }
+
         public event Action Used, Switched, Examined, Exited;
 
         #endregion
@@ -91,6 +93,9 @@ namespace Assets._Project.Scripts.Player.Controlls
 
                     return smoothLookValue;
                 });
+
+            ExamineMove = this.UpdateAsObservable()
+                .Select(_ => _controls.Examine.Move.ReadValue<Vector2>());
         }
 
         private void OnUsed(InputAction.CallbackContext _) => Used?.Invoke();

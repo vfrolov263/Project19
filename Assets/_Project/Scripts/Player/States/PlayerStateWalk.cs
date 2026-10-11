@@ -1,4 +1,5 @@
 using Assets._Project.Scripts.Gameplay.Pausable;
+using Assets._Project.Scripts.Gameplay.Props;
 using Assets._Project.Scripts.Player.Controlls;
 using Assets._Project.Scripts.Player.Glasses;
 using Assets._Project.Scripts.Player.Interaction;
@@ -72,7 +73,15 @@ namespace Assets._Project.Scripts.Player.States
 
             if (_interactionHandler.TryUse(out IInteractable interactable))
             {
-                _playerController.ChangeState(new PlayerStateExamine(_playerController, _inputController, interactable));
+                switch (interactable)
+                {
+                    case DoorInteractable door:
+                        _playerController.ChangeState(new PlayerStateDoor(_playerController, _inputController, door));
+                        break;
+                    default:
+                        _playerController.ChangeState(new PlayerStateExamine(_playerController, _inputController, interactable));
+                        break;
+                }
             }
         }
 

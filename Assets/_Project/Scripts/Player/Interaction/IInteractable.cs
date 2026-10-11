@@ -12,8 +12,8 @@ namespace Assets._Project.Scripts.Player.Interaction
 
         void ExitInteraction(Action onDone = null) {}
 
-        void Select();
+        void Select() {}
 
-        void Deselect();
+        void Deselect() {}
     }
 }

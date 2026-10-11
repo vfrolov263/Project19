@@ -9,7 +9,8 @@ namespace Assets._Project.Scripts.Player.States
     public enum PlayerState
     {
         Walk,
-        Examine
+        Examine,
+        Door
     }
 
     public interface IPlayerState : IDisposable, IPausable

@@ -15,6 +15,7 @@ namespace Assets._Project.Scripts.Player
     {
         public event Action<bool> WorldSwitched;
         public IInteractor EyesInteractor { get; private set; }
+        public FirstPersonInputController InputController => _inputController;
         private readonly InteractionHandler _interactionHandler;
         // private readonly FirstPersonController _fpController;
         private GlassesController _glasses;
@@ -22,6 +23,7 @@ namespace Assets._Project.Scripts.Player
         private IPlayerState _currentState;
         private CinemachineCamera _defaultCamera;
         private ClueController _clueController;
+        private Transform _transform;
 
         // public PlayerController(FirstPersonController fpController, FirstPersonInputController addController,
         //     InteractionHandler interactionHandler, GlassesController glasses)
@@ -35,8 +37,9 @@ namespace Assets._Project.Scripts.Player
         // }
 
         public PlayerController(FirstPersonInputController inputController, InteractionHandler interactionHandler,
-            GlassesController glasses, CinemachineCamera defaultCamera, ClueController clueController)
+            GlassesController glasses, CinemachineCamera defaultCamera, ClueController clueController, Transform transform)
         {
+            PlayerControllerLocator.Current = this;
             _inputController = inputController;
             _interactionHandler = interactionHandler;
             _glasses = glasses;
@@ -46,6 +49,7 @@ namespace Assets._Project.Scripts.Player
             _clueController = clueController;
             _interactionHandler.Selected += OnInteractableSelected;
             _interactionHandler.Deselected += OnInteractableDeselected;
+            _transform = transform;
         }
 
         public bool Paused 
@@ -107,12 +111,19 @@ namespace Assets._Project.Scripts.Player
         public void CheckPerception()
         {
             WorldSwitched?.Invoke(_glasses.IsOn);
+            Physics.IgnoreLayerCollision(0, 10, _glasses.IsOn);
         }
 
         public void Start()
         {
             _defaultCamera.enabled = false;
             _defaultCamera.enabled = true;
+        }
+
+        public void SetPosition(Vector3 position, Vector3 forward)
+        {
+            _transform.position = position;
+            _transform.forward = forward;
         }
 
         private void OnInteractableSelected(IInteractable interactable)

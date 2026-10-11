@@ -390,6 +390,16 @@ namespace Assets._Project.Scripts.Systems.Input
                     ""interactions"": """",
                     ""initialStateCheck"": false,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Button"",
+                    ""id"": ""fb4ba91b-700b-4884-87f7-064c7702ab8d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -414,6 +424,127 @@ namespace Assets._Project.Scripts.Systems.Input
                     ""action"": ""Exit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""ArrowKeys"",
+                    ""id"": ""c9f08d0d-f0a0-4ab3-bb60-8baf16542a83"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""3a6738c2-3896-4ef8-bcf7-3fd7a3e48f58"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""c614d91a-80ff-4e4f-99fa-49c5202068ba"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""a4d017c0-b529-42ad-85fb-9d1ab137f2a8"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""6850ce52-8382-4ca5-a5f2-60f2518ee455"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""WasdKeys"",
+                    ""id"": ""2741fb98-d1c6-45eb-95c2-db45ab4897fd"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""7ea2e3a6-4214-49b0-80f6-9f8ce5b50470"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""a41b9e05-53b0-4a68-a8c5-bccd2f5a4a13"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""8a59765e-2572-4cb7-a7ba-695691e70ab2"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""94994e80-f85b-43a2-bef7-8d23749d99ba"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a2c3e145-f861-4121-b1e3-5eabef6dda1e"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -432,6 +563,7 @@ namespace Assets._Project.Scripts.Systems.Input
             m_Examine = asset.FindActionMap("Examine", throwIfNotFound: true);
             m_Examine_Use = m_Examine.FindAction("Use", throwIfNotFound: true);
             m_Examine_Exit = m_Examine.FindAction("Exit", throwIfNotFound: true);
+            m_Examine_Move = m_Examine.FindAction("Move", throwIfNotFound: true);
         }
 
         ~@PlayerInput()
@@ -666,6 +798,7 @@ namespace Assets._Project.Scripts.Systems.Input
         private List<IExamineActions> m_ExamineActionsCallbackInterfaces = new List<IExamineActions>();
         private readonly InputAction m_Examine_Use;
         private readonly InputAction m_Examine_Exit;
+        private readonly InputAction m_Examine_Move;
         /// <summary>
         /// Provides access to input actions defined in input action map "Examine".
         /// </summary>
@@ -685,6 +818,10 @@ namespace Assets._Project.Scripts.Systems.Input
             /// Provides access to the underlying input action "Examine/Exit".
             /// </summary>
             public InputAction @Exit => m_Wrapper.m_Examine_Exit;
+            /// <summary>
+            /// Provides access to the underlying input action "Examine/Move".
+            /// </summary>
+            public InputAction @Move => m_Wrapper.m_Examine_Move;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -717,6 +854,9 @@ namespace Assets._Project.Scripts.Systems.Input
                 @Exit.started += instance.OnExit;
                 @Exit.performed += instance.OnExit;
                 @Exit.canceled += instance.OnExit;
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
             }
 
             /// <summary>
@@ -734,6 +874,9 @@ namespace Assets._Project.Scripts.Systems.Input
                 @Exit.started -= instance.OnExit;
                 @Exit.performed -= instance.OnExit;
                 @Exit.canceled -= instance.OnExit;
+                @Move.started -= instance.OnMove;
+                @Move.performed -= instance.OnMove;
+                @Move.canceled -= instance.OnMove;
             }
 
             /// <summary>
@@ -838,6 +981,13 @@ namespace Assets._Project.Scripts.Systems.Input
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnExit(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnMove(InputAction.CallbackContext context);
         }
     }
 }

@@ -23,7 +23,8 @@ namespace Assets._Project.Scripts.Player
             return new(controller, new(), new(_glassesCam.GetComponentInChildren<Animator>(),
                 new CameraInteractor(_glassesCam, mask: LayerMask.GetMask("AlterWorld"), rayOffset: new(.5f, .5f)),
                 _glassesCam.GetComponentInChildren<AnimationEventsHandler>(), "readyToUse", "motionStart", "motionEnd"),
-                player.GetComponentInChildren<CinemachineCamera>(), player.GetComponentInChildren<ClueController>());
+                player.GetComponentInChildren<CinemachineCamera>(), player.GetComponentInChildren<ClueController>(),
+                player.transform);
         }
     }
 }
