@@ -29,10 +29,12 @@ namespace Assets._Project.Scripts.Gameplay.Props
         private bool _isFrontPusher;
 
         private Collider _collider;
+        private CinemachineBrain _camBrain;
 
         private void Awake()
         {
             _collider = GetComponent<Collider>();
+            _camBrain = Camera.main.GetComponent<CinemachineBrain>();
         }
 
         private void OnEnable()
@@ -53,6 +55,9 @@ namespace Assets._Project.Scripts.Gameplay.Props
 
         public void Interact()
         {
+            if (_doorController.State == DoorState.Moving)
+                return;
+                
             _collider.enabled = false;
 
             if (_doorController.State == (_isFrontPusher ? DoorState.OpenedBack : DoorState.OpenedFront))
@@ -75,11 +80,19 @@ namespace Assets._Project.Scripts.Gameplay.Props
                 _doorController.CloseBy(_isFrontPusher ? force : -force);
         }
 
-        public void ExitInteraction(Action onDone = null)
+        public void ExitInteraction(Action onDone = null) => _ = ExitRoutine(onDone);
+
+        private async Awaitable ExitRoutine(Action onDone)
         {
             _doorCamera.enabled = false;
+            await Awaitable.NextFrameAsync(destroyCancellationToken);
+
+            while (_camBrain != null && _camBrain.IsBlending)
+            {
+                await Awaitable.FixedUpdateAsync(destroyCancellationToken);
+            }
+
             _collider.enabled = true;
-            NeedManualControl = true;
             onDone?.Invoke();
         }
     }

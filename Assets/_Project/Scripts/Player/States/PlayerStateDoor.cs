@@ -84,8 +84,7 @@ namespace Assets._Project.Scripts.Player.States
 
         private void ExitToWalk()
         {
-            _doorInteractable.ExitInteraction();
-            _playerController.ChangeState(PlayerState.Walk);
+            _doorInteractable.ExitInteraction(() => _playerController.ChangeState(PlayerState.Walk));
         }
 
         private void OnMoveInput(Vector2 input)

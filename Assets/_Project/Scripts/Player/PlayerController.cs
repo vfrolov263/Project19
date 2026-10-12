@@ -39,7 +39,6 @@ namespace Assets._Project.Scripts.Player
         public PlayerController(FirstPersonInputController inputController, InteractionHandler interactionHandler,
             GlassesController glasses, CinemachineCamera defaultCamera, ClueController clueController, Transform transform)
         {
-            PlayerControllerLocator.Current = this;
             _inputController = inputController;
             _interactionHandler = interactionHandler;
             _glasses = glasses;
@@ -122,6 +121,7 @@ namespace Assets._Project.Scripts.Player
 
         public void SetPosition(Vector3 position, Vector3 forward)
         {
+            position.y = _transform.position.y;
             _transform.position = position;
             _transform.forward = forward;
         }

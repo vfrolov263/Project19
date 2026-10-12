@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Assets._Project.Scripts.Gameplay.Props
@@ -7,7 +8,8 @@ namespace Assets._Project.Scripts.Gameplay.Props
     {
         Closed,
         OpenedFront,
-        OpenedBack
+        OpenedBack,
+        Moving
     }
 
     public class DoorController : MonoBehaviour
@@ -47,6 +49,7 @@ namespace Assets._Project.Scripts.Gameplay.Props
 
         public event Action Opened;
         public event Action Closed;
+
 
         private void Awake()
         {
@@ -88,8 +91,8 @@ namespace Assets._Project.Scripts.Gameplay.Props
         {
             if (Mathf.Abs(_currentAngle) >= _openThreshold)
             {
-                SetAngle(_currentAngle != 0f ?  _currentAngle / Mathf.Abs(_currentAngle) * _fullyOpenAngle : 0f);
-                State = _currentAngle < 0f ? DoorState.OpenedFront : DoorState.OpenedBack;
+                UseDoorCloser(_currentAngle != 0f ?  _currentAngle / Mathf.Abs(_currentAngle) * _fullyOpenAngle : 0f, 
+                    _currentAngle < 0f ? DoorState.OpenedFront : DoorState.OpenedBack);
                 Opened?.Invoke();
             }
         }
@@ -98,21 +101,27 @@ namespace Assets._Project.Scripts.Gameplay.Props
         {
             if (Mathf.Abs(_currentAngle) <= _closeThreshold)
             {
-                SetAngle(_currentAngle != 0f ?  _currentAngle / Mathf.Abs(_currentAngle) * _closedAngle : 0f);
-                State = DoorState.Closed;
+                UseDoorCloser(_currentAngle != 0f ?  _currentAngle / Mathf.Abs(_currentAngle) * _closedAngle : 0f, DoorState.Closed);
                 Closed?.Invoke();
             }
         }
 
-        public void Close()
-        {
-            SetAngle(_closedAngle);
-            TryAutoClose();
-        }
+        public void Close() => UseDoorCloser(_closedAngle, DoorState.Closed);
 
         private void ApplyRotation()
         {
             _doorTransform.localRotation = Quaternion.AngleAxis(_currentAngle, _hingeAxis);
+        }
+
+        private void UseDoorCloser(float toAngle, DoorState finalState)
+        {
+            State = DoorState.Moving;
+            _doorTransform.DOLocalRotateQuaternion(Quaternion.AngleAxis(toAngle, _hingeAxis), 1f)
+            .OnComplete(() =>
+            {
+                State = finalState;
+                SetAngle(toAngle);
+            });
         }
 
         public Vector3 GetForwardDirection() =>
