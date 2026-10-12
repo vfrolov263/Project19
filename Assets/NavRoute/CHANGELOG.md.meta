@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c865e5573d632c84e9ee77e9bcf6cc05
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/CHANGELOG.md
+  uploadId: 972088

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b6108b38a217a1f4e861a7224f2a9357
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Demo/Prefabs/Unit/Animations/Walk.anim
+  uploadId: 972088

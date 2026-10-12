@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 944dbe6d31594a44faa0d327e661ba86
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Runtime/Utils/ChildCountChangeNotifier.cs
+  uploadId: 972088

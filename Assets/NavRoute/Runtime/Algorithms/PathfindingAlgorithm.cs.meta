@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 3684e4d9199fd234c89adc38655735a5
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Runtime/Algorithms/PathfindingAlgorithm.cs
+  uploadId: 972088

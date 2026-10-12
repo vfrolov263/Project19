@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 8a8d33ad247316c4ebccb71eb362b55a
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Runtime/Algorithms/BIDijkstra.cs
+  uploadId: 972088

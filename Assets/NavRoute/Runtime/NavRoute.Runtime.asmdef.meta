@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ea103a7cd537c484596f895e021cdb99
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Runtime/NavRoute.Runtime.asmdef
+  uploadId: 972088

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 77ea0aa60a2449c408542137aef278a0
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8574412962073106934
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Demo/Textures/Layer_sand.terrainlayer
+  uploadId: 972088

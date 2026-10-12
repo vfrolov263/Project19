@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c9d5f8c3c70ccd54b92584061ab3fb04
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Prefabs/Waypoint.prefab
+  uploadId: 972088

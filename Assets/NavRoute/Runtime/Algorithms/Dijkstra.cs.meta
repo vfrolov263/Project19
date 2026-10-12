@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: c4851260f047789499c92506a7ad82a0
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Runtime/Algorithms/Dijkstra.cs
+  uploadId: 972088

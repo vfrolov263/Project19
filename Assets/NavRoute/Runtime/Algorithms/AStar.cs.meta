@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 2cda9a3aba19355489ef755723571897
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Runtime/Algorithms/AStar.cs
+  uploadId: 972088

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 93cb60c48c3fdd04b9e8ec361a126db9
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Documentation/Manual.pdf
+  uploadId: 972088

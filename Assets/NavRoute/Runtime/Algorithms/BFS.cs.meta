@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 57e2f9b15127688409872293fabcc7db
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Runtime/Algorithms/BFS.cs
+  uploadId: 972088

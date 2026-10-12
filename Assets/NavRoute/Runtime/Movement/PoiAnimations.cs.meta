@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 056efe6bae2fc2348ab7cfc38564773b
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Runtime/Movement/PoiAnimations.cs
+  uploadId: 972088

@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 830bf8677c99aeb4ca46ff660666925d
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Runtime/Utils/PriorityQueue.cs
+  uploadId: 972088

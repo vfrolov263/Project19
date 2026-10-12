@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: e379d3b366d1ebc4c8da8af169ea5347
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Runtime/Core/Waypoint.cs
+  uploadId: 972088

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 5e9ca64cc1e5d3a45adc50bc46e95f2c
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/README.md
+  uploadId: 972088

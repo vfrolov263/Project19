@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 6237903f008a4e848bf5ada0baf10a31
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Runtime/Movement/RouteWalker.cs
+  uploadId: 972088

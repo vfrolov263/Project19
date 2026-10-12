@@ -1,0 +1,17 @@
+{
+  "name": "com.insearchman.navroute",
+  "version": "1.0.0",
+  "displayName": "NavRoute",
+  "description": "Advanced navigation system with multiple pathfinding algorithms",
+  "unity": "6000.3",
+  "dependencies": {
+    "com.unity.ai.navigation": "2.0.0"
+  },
+  "keywords": [ "navigation", "pathfinding", "ai", "navmesh" ],
+  "license": "Unity Asset Store EULA",
+  "documentationUrl": "https://github.com/insearchman/Documentations/tree/d69d755b198652f2b04f70b054ce675d572e2643/Unity_Asset_NavRoute",
+  "author": {
+    "name": "Insearchman",
+    "email": "insearchman@gmail.com"
+  }
+}

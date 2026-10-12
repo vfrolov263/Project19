@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c3655cd1082c19c419f5729b3d115700
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Demo/Scene/DemoScene.unity
+  uploadId: 972088

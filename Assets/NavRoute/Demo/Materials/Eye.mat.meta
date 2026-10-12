@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8ece57f79a936d14bb999045af0593b8
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Demo/Materials/Eye.mat
+  uploadId: 972088

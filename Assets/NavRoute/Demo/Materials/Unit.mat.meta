@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 321698d455f55264d98653bb8786e33e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Demo/Materials/Unit.mat
+  uploadId: 972088

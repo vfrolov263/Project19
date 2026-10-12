@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: c749ae6e343934c46b3872cabede4cf2
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Runtime/Core/Poi.cs
+  uploadId: 972088

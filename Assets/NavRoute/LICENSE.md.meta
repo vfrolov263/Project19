@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 4302b7438e886a848abb82a190620bf6
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/LICENSE.md
+  uploadId: 972088

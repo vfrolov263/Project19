@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: b23ee2a884a0a9e41bb4d3ce87958897
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Runtime/Algorithms/IDDFS.cs
+  uploadId: 972088

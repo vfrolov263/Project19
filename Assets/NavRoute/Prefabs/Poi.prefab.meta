@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b8206781851b2994c99513af3cd24712
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Prefabs/Poi.prefab
+  uploadId: 972088

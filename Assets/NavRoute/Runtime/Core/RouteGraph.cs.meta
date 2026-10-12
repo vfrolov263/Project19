@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 94cad8245a5df0549981f37fe209da0a
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Runtime/Core/RouteGraph.cs
+  uploadId: 972088

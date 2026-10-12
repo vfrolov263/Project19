@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2dddab019882968438c6235e0edbe565
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Demo/Prefabs/Unit/Animations/Downtime1.anim
+  uploadId: 972088

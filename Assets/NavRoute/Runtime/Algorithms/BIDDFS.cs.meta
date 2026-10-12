@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: c2bb97db7109e28449fb27e1e576c5c1
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Runtime/Algorithms/BIDDFS.cs
+  uploadId: 972088

@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 5a7e2278879351149b75e40d00a8562c
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Runtime/Algorithms/BIBFS.cs
+  uploadId: 972088

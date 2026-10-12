@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b396045b334c7af4fb78a71bd6198559
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 15600000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 389992
+  packageName: NavRoute
+  packageVersion: 1.0.0
+  assetPath: Assets/NavRoute/Demo/Scene/DemoScene/DemoTerrain.asset
+  uploadId: 972088
