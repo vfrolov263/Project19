@@ -10,7 +10,8 @@ namespace Assets._Project.Scripts.Player.States
     {
         Walk,
         Examine,
-        Door
+        Door,
+        Talk
     }
 
     public interface IPlayerState : IDisposable, IPausable

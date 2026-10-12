@@ -8,13 +8,13 @@ namespace Assets._Project.Scripts.Player.States
     public class PlayerStateExamine : IPlayerState
     {
         private FirstPersonInputController _inputController;
-        private PlayerController _playerController;
+        protected PlayerController _playerController;
         private InteractionHandler _interactionHandler;
         private IInteractable _interactable;
 
         private bool _isPaused;
 
-        public PlayerState State => PlayerState.Examine;
+        public virtual PlayerState State => PlayerState.Examine;
 
         public bool Paused
         {
@@ -43,23 +43,25 @@ namespace Assets._Project.Scripts.Player.States
             _inputController.CharacterControllerActivity = false;
             _inputController.ExamineControllerActivity = true;
             Paused = _playerController.Paused;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
 
-            if (_interactable != null)
-            {
-                _interactable.Interact();
-            }
+            // if (_interactable != null)
+            // {
+            //     _interactable.Interact();
+            // }
         }
 
         public void Stop() => Pause();
 
-        private void Pause()
+        protected virtual void Pause()
         {
             _inputController.Examined -= OnExamined;
             _inputController.Exited -= OnExited;
             _isPaused = true;
         }
 
-        private void Continue()
+        protected virtual void Continue()
         {
             _inputController.Examined += OnExamined;
             _inputController.Exited += OnExited;
@@ -70,7 +72,7 @@ namespace Assets._Project.Scripts.Player.States
         { 
         }
 
-        private void OnExited()
+        protected virtual void OnExited()
         {
             if (_interactable != null)
             {

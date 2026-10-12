@@ -6,6 +6,7 @@ using VContainer;
 
 namespace Assets._Project.Scripts.Gameplay.Props
 {
+    [RequireComponent(typeof(Collider))]
     public class SimpleInteractable : MonoBehaviour, IInteractable
     {
         [field: SerializeField]
@@ -14,7 +15,7 @@ namespace Assets._Project.Scripts.Gameplay.Props
         private CinemachineBrain _camBrain;
         private Collider _collider;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             _camera = GetComponentInChildren<CinemachineCamera>();
             _camBrain = Camera.main.GetComponent<CinemachineBrain>();
@@ -29,7 +30,7 @@ namespace Assets._Project.Scripts.Gameplay.Props
             Debug.Log($"{gameObject.name} deselected");
         }
 
-        public void Interact()
+        public virtual void Interact()
         {
             Debug.Log($"{gameObject.name} interacted");
 

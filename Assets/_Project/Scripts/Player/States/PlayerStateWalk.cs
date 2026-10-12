@@ -1,3 +1,4 @@
+using Assets._Project.Scripts.Gameplay.Characters;
 using Assets._Project.Scripts.Gameplay.Pausable;
 using Assets._Project.Scripts.Gameplay.Props;
 using Assets._Project.Scripts.Player.Controlls;
@@ -46,6 +47,8 @@ namespace Assets._Project.Scripts.Player.States
             _inputController.ExamineControllerActivity = false;
             _interactionHandler.Interactor = _glasses.IsReadyToUse ? _glasses : _playerController.EyesInteractor;
             Paused = _playerController.Paused;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
         private void Pause()
@@ -77,6 +80,9 @@ namespace Assets._Project.Scripts.Player.States
                 {
                     case DoorInteractable door:
                         _playerController.ChangeState(new PlayerStateDoor(_playerController, _inputController, door));
+                        break;
+                    case CharacterInteractable character:
+                        _playerController.ChangeState(new PlayerStateTalk(_playerController, _inputController, character));
                         break;
                     default:
                         _playerController.ChangeState(new PlayerStateExamine(_playerController, _inputController, interactable));
