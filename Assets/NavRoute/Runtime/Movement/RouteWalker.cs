@@ -32,6 +32,8 @@ namespace Assets.NavRoute.Movement
 
         private Coroutine _walkCoroutine;
         private Coroutine _lookCoroutine;
+        private Coroutine _continueRoutine;
+        private NavMeshPath _interruptedPath;
 
         private readonly WaitWhile _cachedWaitWhilePause = new(() => Time.timeScale == 0);
         private WaitUntil _cachedArrivedCondition;
@@ -57,6 +59,15 @@ namespace Assets.NavRoute.Movement
         {
             Init();
 
+            if (_interruptedPath != null || _agent.hasPath)
+            {
+                _agent.path = _agent.hasPath ? _agent.path : _interruptedPath;
+                _interruptedPath = null;
+                ClearCoroutine(ref _continueRoutine);
+                StartCoroutine(ContinueWalkRoutine());
+                return;
+            }
+
             if (_nextPoi == null || _currentRoute == null)
             {
                 GoToNearestPoi();
@@ -73,9 +84,16 @@ namespace Assets.NavRoute.Movement
 
             ClearCoroutine(ref _walkCoroutine);
             ClearCoroutine(ref _lookCoroutine);
+            ClearCoroutine(ref _continueRoutine);
 
             if (_agent != null && _agent.isActiveAndEnabled)
                 _agent.ResetPath();
+        }
+
+        public void PauseWalk()
+        {
+            _interruptedPath = _agent.path;
+            StopWalk();
         }
 
         public void GoTo(Vector3 target, Action onComplete)
@@ -83,6 +101,15 @@ namespace Assets.NavRoute.Movement
             ClearCoroutine(ref _walkCoroutine);
 
             _walkCoroutine = StartCoroutine(GoToRoutine(target, onComplete));
+        }
+
+        private IEnumerator ContinueWalkRoutine()
+        {
+            yield return new WaitUntil(() => !_agent.pathPending);
+            _animator.SetBool(WalkBool, true);
+            yield return new WaitUntil(() => !_agent.hasPath);
+            _animator.SetBool(WalkBool, false);
+            StartWalk();
         }
 
         private IEnumerator GoToRoutine(Vector3 target, Action onComplete)
