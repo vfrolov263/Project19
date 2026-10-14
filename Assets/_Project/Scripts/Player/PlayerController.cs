@@ -110,7 +110,6 @@ namespace Assets._Project.Scripts.Player
         public void CheckPerception()
         {
             WorldSwitched?.Invoke(_glasses.IsOn);
-            Physics.IgnoreLayerCollision(0, 10, _glasses.IsOn);
         }
 
         public void Start()

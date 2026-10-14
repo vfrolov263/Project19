@@ -1,5 +1,8 @@
 using System;
+using Assets._Project.Scripts.Gameplay.Rules.EntityBinding;
 using DG.Tweening;
+using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 
 namespace Assets._Project.Scripts.Gameplay.Props
@@ -12,7 +15,7 @@ namespace Assets._Project.Scripts.Gameplay.Props
         Moving
     }
 
-    public class DoorController : MonoBehaviour
+    public class DoorController : MonoBehaviour, IBindingEntity
     {
         [Header("Door Settings")]
         [SerializeField]
@@ -49,7 +52,7 @@ namespace Assets._Project.Scripts.Gameplay.Props
 
         public event Action Opened;
         public event Action Closed;
-
+        public event Action EntityStateChanged;
 
         private void Awake()
         {
@@ -63,6 +66,10 @@ namespace Assets._Project.Scripts.Gameplay.Props
                 DoorState.OpenedBack => _fullyOpenAngle,
                 _ => 0f
             };
+
+            _doorTransform.ObserveEveryValueChanged(door => door.rotation)
+                .Subscribe(_ => EntityStateChanged?.Invoke())
+                .AddTo(this);
 
             ApplyRotation();
         }
@@ -108,6 +115,11 @@ namespace Assets._Project.Scripts.Gameplay.Props
 
         public void Close() => UseDoorCloser(_closedAngle, DoorState.Closed);
 
+        public Transform GetDoorTransform()
+        {
+            return _doorTransform;
+        }
+
         private void ApplyRotation()
         {
             _doorTransform.localRotation = Quaternion.AngleAxis(_currentAngle, _hingeAxis);
@@ -129,5 +141,13 @@ namespace Assets._Project.Scripts.Gameplay.Props
 
         public Transform PlayerStandTransform => _playerStandTransform;
         public float MoveSensitivity => _moveSensitivity;
+
+        public void OnInfluencingEntityStateChanged(IBindingEntity entity)
+        {
+            if (entity is DoorController doorController)
+            {
+                _doorTransform.localRotation = doorController.GetDoorTransform().localRotation;
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
 using Assets._Project.Scripts.Gameplay.Graphics;
+using Assets._Project.Scripts.Gameplay.Rules.Physics;
 using Assets._Project.Scripts.Player;
 using Assets._Project.Scripts.Systems.Input;
 using UnityEngine;
@@ -25,6 +26,8 @@ namespace Assets._Project.Scripts.Initialization
             builder.Register(c => c.Resolve<PlayerFactory>().CreatePlayer(_playerPrefab, _playerStart),
                 Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
             builder.RegisterComponent(_volumesController);
+            builder.Register(c => new PhysicsController(c.Resolve<PlayerController>(), 0, 10, 11), 
+                Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
             builder.RegisterComponent(gameplayEntryPoint).AsImplementedInterfaces().AsSelf();
         }
     }
