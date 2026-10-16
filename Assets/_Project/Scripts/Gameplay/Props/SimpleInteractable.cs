@@ -21,8 +21,8 @@ namespace Assets._Project.Scripts.Gameplay.Props
             _camBrain = Camera.main.GetComponent<CinemachineBrain>();
             _collider = GetComponent<Collider>();
             
-            if (_camera == null)
-                throw new ArgumentException($"{gameObject.name} vcam is null.");
+            // if (_camera == null)
+            //     throw new ArgumentException($"{gameObject.name} vcam is null.");
         }
 
         public void Deselect()
@@ -40,7 +40,9 @@ namespace Assets._Project.Scripts.Gameplay.Props
             //     return;    
             // }
 
-            _camera.enabled = true;
+            if (_camera != null)
+                _camera.enabled = true;
+
             _collider.enabled = false;
         }
 
@@ -53,7 +55,9 @@ namespace Assets._Project.Scripts.Gameplay.Props
 
         private async Awaitable ExitRoutine(Action onDone)
         {
-            _camera.enabled = false;
+            if (_camera != null)
+                _camera.enabled = false;
+                
             await Awaitable.NextFrameAsync(destroyCancellationToken);
 
             while (_camBrain != null && _camBrain.IsBlending)
