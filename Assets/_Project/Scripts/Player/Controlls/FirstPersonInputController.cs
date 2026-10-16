@@ -84,7 +84,7 @@ namespace Assets._Project.Scripts.Player.Controlls
             _look = this.UpdateAsObservable()
                 .Select(_ =>
                 {
-                    var rawLookValue = _controls.Character.Look.ReadValue<Vector2>();
+                    var rawLookValue = _controls.Character.Look.ReadValue<Vector2>() * Settings.Settings.MouseSensitivity;
 
                     smoothLookValue = new Vector2(
                         Mathf.Lerp(smoothLookValue.x, rawLookValue.x, lookSmoothingFactor * Time.deltaTime),

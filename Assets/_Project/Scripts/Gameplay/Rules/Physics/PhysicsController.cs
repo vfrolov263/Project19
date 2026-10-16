@@ -23,7 +23,7 @@ namespace Assets._Project.Scripts.Gameplay.Rules.Physics
         public void Start()
         {
             _playerController.WorldSwitched += OnWorldSwitched;
-            UnityEngine.Physics.IgnoreLayerCollision(_playerLayerId, _realWorldLayerId, true);
+            UnityEngine.Physics.IgnoreLayerCollision(_playerLayerId, _alterWorldLayerId, true);
         }
 
         public void Dispose()
