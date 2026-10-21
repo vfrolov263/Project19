@@ -42,7 +42,7 @@ namespace Assets._Project.Scripts.Player
             _inputController = inputController;
             _interactionHandler = interactionHandler;
             _glasses = glasses;
-            EyesInteractor = new CameraInteractor(Camera.main, mask: LayerMask.GetMask("RealWorld"), rayOffset: new(.5f, .5f));
+            EyesInteractor = _interactionHandler.Interactor;//new CameraInteractor(Camera.main, mask: LayerMask.GetMask("RealWorld"), rayOffset: new(.5f, .5f));
             _defaultCamera = defaultCamera;
             ChangeState(PlayerState.Walk);
             _clueController = clueController;

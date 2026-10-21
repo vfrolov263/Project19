@@ -20,8 +20,10 @@ namespace Assets._Project.Scripts.Player
 
             Camera _glassesCam = Camera.main;
 
-            return new(controller, new(), new(_glassesCam.GetComponentInChildren<Animator>(),
-                new CameraInteractor(_glassesCam, mask: LayerMask.GetMask("AlterWorld"), rayOffset: new(.5f, .5f)),
+            return new(controller, 
+                new(interactor: new CameraInteractor(Camera.main, mask: LayerMask.GetMask("CommonInteractable", "RealWorld"),  rayOffset: new(.5f, .5f))),
+                new(_glassesCam.GetComponentInChildren<Animator>(),
+                new CameraInteractor(_glassesCam, mask: LayerMask.GetMask("CommonInteractable", "AlterWorld"), rayOffset: new(.5f, .5f)),
                 _glassesCam.GetComponentInChildren<AnimationEventsHandler>(), "readyToUse", "motionStart", "motionEnd"),
                 player.GetComponentInChildren<CinemachineCamera>(), player.GetComponentInChildren<ClueController>(),
                 player.transform);
