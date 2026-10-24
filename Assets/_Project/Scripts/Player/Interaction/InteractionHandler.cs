@@ -98,7 +98,11 @@ namespace Assets._Project.Scripts.Player.Interaction
         private bool FindInteractable(out IInteractable interactable)
         {
             interactable = null;
-            //Debug.DrawRay(_interactor.Ray.origin, _interactor.Ray.direction, Color.red, 1f);
+
+#if TEST_RUN
+            Debug.DrawRay(_interactor.Ray.origin, _interactor.Ray.direction, Color.red, 1f);
+#endif
+
             return Physics.Raycast(_interactor.Ray, out var hit, 
                 Settings.Settings.MAX_INTERACTION_DISTANCE, _interactor.Mask) &&
                 hit.collider.TryGetComponent(out interactable) && 
