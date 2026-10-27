@@ -11,9 +11,26 @@ using VContainer.Unity;
 
 namespace Assets._Project.Scripts.Player
 {
+    public enum PlayerAction
+    {
+        SelectInteractable,
+        DeselectInteractable,
+        Interact,
+        ExitInteract,
+        PutOnGlasses,
+        TakeOffGlasses    
+    }
+
+    public struct PlayerActionMessage
+    {
+        public PlayerAction ActionType;
+        public IInteractable Interactable;
+    }
+
     public class PlayerController : IPausable, IDisposable, IStartable
     {
         public event Action<bool> WorldSwitched;
+        public event Action<PlayerActionMessage> Actioned;
         public IInteractor EyesInteractor { get; private set; }
         public FirstPersonInputController InputController => _inputController;
         private readonly InteractionHandler _interactionHandler;
@@ -110,6 +127,7 @@ namespace Assets._Project.Scripts.Player
         public void CheckPerception()
         {
             WorldSwitched?.Invoke(_glasses.IsOn);
+            Actioned?.Invoke(new() {ActionType = _glasses.IsOn ? PlayerAction.PutOnGlasses : PlayerAction.TakeOffGlasses });
         }
 
         public void Start()
@@ -125,9 +143,15 @@ namespace Assets._Project.Scripts.Player
             _transform.forward = forward;
         }
 
+        public void SayComment(string comment)
+        {
+            _clueController.SayComment(comment);
+        }
+
         private void OnInteractableSelected(IInteractable interactable)
         {
             _clueController.ShowClue(interactable.Name);
+            Actioned?.Invoke(new() { ActionType = PlayerAction.SelectInteractable, Interactable = interactable });
         }
 
         private void OnInteractableDeselected()

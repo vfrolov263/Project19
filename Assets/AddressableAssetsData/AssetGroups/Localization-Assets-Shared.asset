@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-Assets-Shared
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Localization-Assets-Shared
+  m_GUID: 90e8a5402f47be6429414b9ec0718865
+  m_SerializeEntries:
+  - m_GUID: 24c647f79b7a15444b6bb7b07c42391f
+    m_Address: Assets/_Project/Localization/Tables/PlayerRemarks Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: ec4c9f6f3f21f224189a458ecd403ce1, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: f1be86226f95526499bd7f3f1f4a8165, type: 2}
+    - {fileID: 11400000, guid: 69e2ddd9ee48c2641b656ab1f2790184, type: 2}
+    - {fileID: 11400000, guid: 722f141c1435c93498200ef468b91e7a, type: 2}

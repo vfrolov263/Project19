@@ -1,4 +1,6 @@
+#define ESC_STRONG_EXIT
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Assets._Project.Scripts.Systems.Input
 {
@@ -27,6 +29,16 @@ namespace Assets._Project.Scripts.Systems.Input
         {
             get => _isFreedomCursor;
         }
-        
+
+#if ESC_STRONG_EXIT
+        private void Update()
+        {
+            if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+            {
+                Debug.Log("Exit");
+                Application.Quit();
+            }
+        }   
+#endif
     }
 }

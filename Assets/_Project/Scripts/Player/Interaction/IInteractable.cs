@@ -4,11 +4,11 @@ namespace Assets._Project.Scripts.Player.Interaction
 {
     public interface IInteractable
     {
-        float InteractionDistance { get => Settings.Settings.MAX_INTERACTION_DISTANCE; }
+        float InteractionDistance { get => Settings.Settings.DEFAULT_INTERACTION_DISTANCE; }
 
         string Name { get => ""; }
 
-        void Interact();
+        bool Interact();
 
         void ExitInteraction(Action onDone = null) {}
 

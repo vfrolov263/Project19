@@ -1,5 +1,5 @@
-﻿using System;
-using Assets._Project.Scripts.Systems.Input;
+﻿#define ESC_STRONG_EXIT
+using System;
 using DyrdaDev.FirstPersonController;
 using UniRx;
 using UniRx.Triggers;
@@ -126,5 +126,16 @@ namespace Assets._Project.Scripts.Player.Controlls
                     _controls.Examine.Disable();
             }
         }
+
+#if ESC_STRONG_EXIT
+        private void Update()
+        {
+            if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+            {
+                Debug.Log("Exit");
+                Application.Quit();
+            }
+        }   
+#endif
     }
 }

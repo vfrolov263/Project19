@@ -53,16 +53,8 @@ namespace Assets._Project.Scripts.Player.Interaction
             return false;
         }
 
-        public bool TryUse(out IInteractable interactable)
-        {
-            if (FindInteractable(out interactable))
-            {
-                interactable.Interact();
-                return true;
-            }
-
-            return false;
-        }
+        public bool TryUse(out IInteractable interactable) =>
+            FindInteractable(out interactable) ? interactable.Interact() : false;
 
         private async Awaitable CheckForInteractionAbilityRoutine()
         {

@@ -6,18 +6,26 @@ using VContainer;
 
 namespace Assets._Project.Scripts.Gameplay.Props
 {
-    [RequireComponent(typeof(Collider))]
     public class SimpleInteractable : MonoBehaviour, IInteractable
     {
         [field: SerializeField]
         public string Name { get; private set; }
+        [field: SerializeField]
+        private bool HasToExamine = true;
+        [field: SerializeField]
+        public float InteractionDistance {get; private set; } = Settings.Settings.DEFAULT_INTERACTION_DISTANCE;
+        [field: SerializeField]
         private CinemachineCamera _camera;
         private CinemachineBrain _camBrain;
         private Collider _collider;
 
+        protected bool IsInTransition => _camBrain != null && _camBrain.IsBlending;
+
         protected virtual void Awake()
         {
-            _camera = GetComponentInChildren<CinemachineCamera>();
+            if (_camera == null)
+                _camera = GetComponentInChildren<CinemachineCamera>();
+
             _camBrain = Camera.main.GetComponent<CinemachineBrain>();
             _collider = GetComponent<Collider>();
             
@@ -30,20 +38,21 @@ namespace Assets._Project.Scripts.Gameplay.Props
             Debug.Log($"{gameObject.name} deselected");
         }
 
-        public virtual void Interact()
+        public virtual bool Interact()
         {
+#if TEST_RUN
             Debug.Log($"{gameObject.name} interacted");
-
-            // if (_camera.enabled)
-            // {
-            //     ExitInteraction();
-            //     return;    
-            // }
+#endif
+            if (!HasToExamine)
+                return false;
 
             if (_camera != null)
                 _camera.enabled = true;
 
-            _collider.enabled = false;
+            if (_collider != null)
+                _collider.enabled = false;
+
+            return true;
         }
 
         public void ExitInteraction(Action onDone = null) => _ = ExitRoutine(onDone);
@@ -55,18 +64,24 @@ namespace Assets._Project.Scripts.Gameplay.Props
 
         private async Awaitable ExitRoutine(Action onDone)
         {
+            OnExit();
+
             if (_camera != null)
                 _camera.enabled = false;
                 
             await Awaitable.NextFrameAsync(destroyCancellationToken);
 
-            while (_camBrain != null && _camBrain.IsBlending)
+            while (IsInTransition)
             {
                 await Awaitable.FixedUpdateAsync(destroyCancellationToken);
             }
 
-            _collider.enabled = true;
+            if (_collider != null)
+                _collider.enabled = true;
+                
             onDone?.Invoke();
         }
+
+        protected virtual void OnExit() {}
     }
 }

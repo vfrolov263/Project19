@@ -53,10 +53,10 @@ namespace Assets._Project.Scripts.Gameplay.Props
 
         private void OnClosed() => Closed?.Invoke();
 
-        public void Interact()
+        public bool Interact()
         {
             if (_doorController.State == DoorState.Moving)
-                return;
+                return false;
                 
             _collider.enabled = false;
 
@@ -70,6 +70,8 @@ namespace Assets._Project.Scripts.Gameplay.Props
                 _doorCamera.enabled = true;
                 NeedManualControl = true;
             }
+
+            return true;
         }
 
         public void Push(float force)

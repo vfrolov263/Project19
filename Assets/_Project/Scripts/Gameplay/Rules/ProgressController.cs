@@ -1,0 +1,86 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Assets._Project.Scripts.Gameplay.Rules.TriggerHandler;
+using Assets._Project.Scripts.Player;
+using UnityEngine;
+
+namespace Assets._Project.Scripts.Gameplay.Rules
+{
+    public class ProgressController : IDisposable
+    {
+        private PlayerController _playerController;
+        private Dictionary<ITriggerHandler, HashSet<string>> _progressRules = new();
+        private HashSet<string> _allTriggers = new();
+        private HashSet<string> _collectedTriggers = new();
+
+        public ProgressController(PlayerController playerController)
+        {
+            _playerController = playerController;
+            _playerController.Actioned += OnPlayerActioned;
+        }
+
+        public void AddProgressRule(ITriggerHandler triggerHandler, string triggerName)
+        {
+            if (_progressRules.TryGetValue(triggerHandler, out var triggers))  
+                triggers.Add(triggerName);
+            else
+                _progressRules.Add(triggerHandler, new() { triggerName });
+
+            _allTriggers.Add(triggerName);
+        }
+
+        public void AddProgressRule(ITriggerHandler triggerHandler, List<string> triggerNames)
+        {
+            if (_progressRules.TryGetValue(triggerHandler, out var triggers))  
+                triggers.Concat(triggerNames.ToHashSet());
+            else
+                _progressRules.Add(triggerHandler, triggerNames.ToHashSet());
+
+            _allTriggers.Concat(triggerNames);
+        }
+
+        public void Dispose()
+        {
+            _playerController.Actioned -= OnPlayerActioned;
+        }
+
+        private void OnPlayerActioned(PlayerActionMessage msg)
+        {
+            switch (msg.ActionType)
+            {
+                case PlayerAction.SelectInteractable:
+                    if (_allTriggers.Contains(msg.Interactable.Name));
+                    {
+                        _collectedTriggers.Add(msg.Interactable.Name);
+                        CheckForTriggerDone();
+                    }
+
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void CheckForTriggerDone()
+        {
+            List<ITriggerHandler> _comletedHandlers = new();
+
+            foreach (var rule in _progressRules)
+            {
+                if (_collectedTriggers.IsSupersetOf(rule.Value))
+                {
+                    Debug.Log($"{rule.Key.Name} execute.");
+                    rule.Key.Execute();
+                    _comletedHandlers.Add(rule.Key);
+                }
+            }
+
+            foreach (var ruleKey in _comletedHandlers)
+            {
+                _progressRules.Remove(ruleKey);
+                _playerController.SayComment("Кажись телефон звонит...");
+            }
+        }
+    }
+}

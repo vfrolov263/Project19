@@ -19,21 +19,31 @@ namespace Assets._Project.Scripts.Gameplay.Characters
             _dialogueRunner = FindFirstObjectByType<DialogueRunner>();
         }
 
-        private void OnEnable()
+        protected void OnEnable()
         {
             _dialogueRunner.onDialogueStart.AddListener(OnDialogueStarted);
             _dialogueRunner.onDialogueComplete.AddListener(OnDialogueEnded);
         }
 
-        private void OnDisable()
+        protected void OnDisable()
         {
+            _dialogueRunner.Stop();
             _dialogueRunner.onDialogueStart.RemoveListener(OnDialogueStarted);
             _dialogueRunner.onDialogueComplete.RemoveListener(OnDialogueEnded);
         }
 
-        public override void Interact()
+        public override bool Interact()
         {
-            base.Interact();
+            bool result = base.Interact();
+
+            if (result)
+                StartDialogue();
+
+            return result;
+        }
+
+        protected void StartDialogue()
+        {
             _dialogueRunner.StartDialogue(_dialogueName);
         }
 
