@@ -9,5 +9,7 @@ namespace Assets._Project.Scripts.Settings
         public const float COMMENT_BASE_TIME = 2f;
         public const int COMMENT_BASE_LENGTH = 100;
         public const float COMMENT_TIME_PER_EXTRA_LETTER = 0.1f;
+        public const float PLAYER_INITIAL_DOOR_OPEN_MOVEMENT_TIME = 0.4f;
+        public const float PLAYER_DOOR_OPEN_VERTICAL_LOOK_ANGLE = 20f;
     }
 }

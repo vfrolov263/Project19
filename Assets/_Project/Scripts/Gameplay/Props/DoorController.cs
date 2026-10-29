@@ -30,6 +30,9 @@ namespace Assets._Project.Scripts.Gameplay.Props
         [SerializeField]
         private float _fullyOpenAngle = 90f;
 
+        [field: SerializeField]
+        public bool IsLocked { get; set; }
+
         [Header("Thresholds")]
         [SerializeField]
         private float _openThreshold = 70f;
@@ -44,6 +47,19 @@ namespace Assets._Project.Scripts.Gameplay.Props
         [Header("Movement")]
         [SerializeField]
         private float _moveSensitivity = 5f;
+
+        [Header("Handles settings")]
+        [SerializeField]
+        private Transform _handlesHandler;
+
+        [SerializeField]
+        private float _handleOpenedAxis = 30f;
+
+        [SerializeField]
+        private float _handleMoveTime = 0.5f;
+
+        private float _handleClosedAxis;
+        
 
         private float _currentAngle;
 
@@ -70,6 +86,9 @@ namespace Assets._Project.Scripts.Gameplay.Props
             _doorTransform.ObserveEveryValueChanged(door => door.rotation)
                 .Subscribe(_ => EntityStateChanged?.Invoke())
                 .AddTo(this);
+
+            if (_handlesHandler != null)
+                _handleClosedAxis = _handlesHandler.rotation.z;
 
             ApplyRotation();
         }
@@ -141,6 +160,37 @@ namespace Assets._Project.Scripts.Gameplay.Props
 
         public Transform PlayerStandTransform => _playerStandTransform;
         public float MoveSensitivity => _moveSensitivity;
+
+        public void OpenHandle() => MoveHandle(_handleOpenedAxis, _handleMoveTime);
+
+        public void CloseHandle() => MoveHandle(_handleClosedAxis, _handleMoveTime);
+
+        public void PullHandle()
+        {
+            if (DOTween.IsTweening(_handlesHandler))
+                return;
+
+            if (_handlesHandler != null)
+            {
+                Vector3 closedRotation = _handlesHandler.localEulerAngles;
+                closedRotation.z = _handleOpenedAxis;
+                _handlesHandler.localEulerAngles = closedRotation;
+            }
+            
+            // todo: smooth transition
+            CloseHandle();
+        }
+
+        private void MoveHandle(float target, float time)
+        {
+            if (_handlesHandler != null)
+            {
+                _handlesHandler.DOKill();
+                Vector3 finalRotation = _handlesHandler.localEulerAngles;
+                finalRotation.z = target;
+                _handlesHandler.DOLocalRotate(finalRotation, time, RotateMode.Fast);
+            }
+        }
 
         public void OnInfluencingEntityStateChanged(IBindingEntity entity)
         {

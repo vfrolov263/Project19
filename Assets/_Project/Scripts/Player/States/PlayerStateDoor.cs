@@ -6,6 +6,7 @@ using Assets._Project.Scripts.Player.Interaction;
 using UniRx;
 using UnityEngine;
 using Unity.Cinemachine;
+using System.Threading;
 
 namespace Assets._Project.Scripts.Player.States
 {
@@ -63,6 +64,23 @@ namespace Assets._Project.Scripts.Player.States
             Paused = _playerController.Paused;
 
             _disposables = new CompositeDisposable();
+            CancellationTokenSource initialMovementCts = new();
+            _disposables.Add(initialMovementCts);
+            _ = InitialMovementRoutine(initialMovementCts.Token);
+        }
+
+        private async Awaitable InitialMovementRoutine(CancellationToken ct)
+        {
+            float initialMovementTime = 0f;
+            float direction = 1f;//_doorInteractable.IsOpened ? -1f : 1f;
+
+            while (initialMovementTime < Settings.Settings.PLAYER_INITIAL_DOOR_OPEN_MOVEMENT_TIME)
+            {
+                OnMoveInput(new(0f, direction));
+                await Awaitable.NextFrameAsync(ct);
+                initialMovementTime += Time.deltaTime;
+            }
+
             _inputController.ExamineMove.Subscribe(OnMoveInput).AddTo(_disposables);
             _doorInteractable.Opened += OnOpened;
             _doorInteractable.Closed += OnClosed;
@@ -72,6 +90,7 @@ namespace Assets._Project.Scripts.Player.States
         {
             _playerController.SetPosition(_doorInteractable.OpenerPosition.position,
                 _doorInteractable.OpenerPosition.forward);
+            _playerController.LookHorizontally();
             ExitToWalk();
         }
 
@@ -84,6 +103,8 @@ namespace Assets._Project.Scripts.Player.States
 
         private void ExitToWalk()
         {
+            _disposables?.Dispose();
+            _disposables = null;
             _doorInteractable.ExitInteraction(() => _playerController.ChangeState(PlayerState.Walk));
         }
 

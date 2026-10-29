@@ -25,8 +25,10 @@ namespace Assets._Project.Scripts.Gameplay.Props
         [field: SerializeField]
         private CinemachineCamera _doorCamera;
 
-        [SerializeField]
-        private bool _isFrontPusher;
+        [field: SerializeField]
+        public bool IsFrontPusher { get; private set; }
+
+        public bool IsOpened => _doorController.State == DoorState.OpenedBack || _doorController.State == DoorState.OpenedFront;
 
         private Collider _collider;
         private CinemachineBrain _camBrain;
@@ -57,10 +59,17 @@ namespace Assets._Project.Scripts.Gameplay.Props
         {
             if (_doorController.State == DoorState.Moving)
                 return false;
+
+            if (_doorController.IsLocked)
+            {
+                _doorController.PullHandle();
+                return false;
+            }
                 
             _collider.enabled = false;
+            _doorController.OpenHandle();
 
-            if (_doorController.State == (_isFrontPusher ? DoorState.OpenedBack : DoorState.OpenedFront))
+            if (_doorController.State == (IsFrontPusher ? DoorState.OpenedBack : DoorState.OpenedFront))
             {
                 _doorController.Close();
                 NeedManualControl = false;
@@ -77,15 +86,16 @@ namespace Assets._Project.Scripts.Gameplay.Props
         public void Push(float force)
         {
             if (force >= 0f)
-                _doorController.OpenBy(_isFrontPusher ? -force : force);
+                _doorController.OpenBy(IsFrontPusher ? -force : force);
             else
-                _doorController.CloseBy(_isFrontPusher ? force : -force);
+                _doorController.CloseBy(IsFrontPusher ? force : -force);
         }
 
         public void ExitInteraction(Action onDone = null) => _ = ExitRoutine(onDone);
 
         private async Awaitable ExitRoutine(Action onDone)
         {
+            _doorController.CloseHandle();
             _doorCamera.enabled = false;
             await Awaitable.NextFrameAsync(destroyCancellationToken);
 

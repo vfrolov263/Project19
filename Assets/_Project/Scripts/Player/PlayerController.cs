@@ -143,6 +143,8 @@ namespace Assets._Project.Scripts.Player
             _transform.forward = forward;
         }
 
+        public void LookHorizontally() => _inputController.SetLookVertical(Settings.Settings.PLAYER_DOOR_OPEN_VERTICAL_LOOK_ANGLE);
+
         public void SayComment(string comment)
         {
             _clueController.SayComment(comment);

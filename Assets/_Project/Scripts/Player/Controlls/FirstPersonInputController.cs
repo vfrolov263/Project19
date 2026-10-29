@@ -37,6 +37,8 @@ namespace Assets._Project.Scripts.Player.Controlls
 
         private Systems.Input.PlayerInput _controls;
 
+        private HeadBob _camera;
+
         #endregion
 
         private void OnEnable()
@@ -60,6 +62,7 @@ namespace Assets._Project.Scripts.Player.Controlls
         protected void Awake()
         {
             _controls = new Systems.Input.PlayerInput();
+            _camera = GetComponentInChildren<HeadBob>();
 
             // Hide the mouse cursor and lock it in the game window.
             Cursor.lockState = CursorLockMode.Locked;
@@ -80,7 +83,7 @@ namespace Assets._Project.Scripts.Player.Controlls
                 .ToReadOnlyReactiveProperty();
 
             // Look:
-            var smoothLookValue = new Vector2(0, 0);
+            Vector2 smoothLookValue = Vector2.zero;
             _look = this.UpdateAsObservable()
                 .Select(_ =>
                 {
@@ -96,6 +99,14 @@ namespace Assets._Project.Scripts.Player.Controlls
 
             ExamineMove = this.UpdateAsObservable()
                 .Select(_ => _controls.Examine.Move.ReadValue<Vector2>());
+        }
+
+        public void SetLookVertical(float angle)
+        {
+            Vector3 rotation = _camera.transform.localEulerAngles;
+            rotation.x = angle;
+            _camera.transform.localEulerAngles = rotation;
+            //_smoothLookValue = new(_smoothLookValue.x, angle);
         }
 
         private void OnUsed(InputAction.CallbackContext _) => Used?.Invoke();

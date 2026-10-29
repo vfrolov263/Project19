@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: a2a59e45c4af194449c03c00f74d4134
   m_currentHash:
     serializedVersion: 2
-    Hash: 3e5e8c9c2ab5a780c3442b3a69aed063
+    Hash: 43f62fb0943ddb16bddd9170eebf5d5c
   m_DisableWriteTypeTree: 0
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
@@ -25,11 +25,11 @@ MonoBehaviour:
   m_InternalBundleIdMode: 1
   m_AssetLoadMode: 0
   m_BundledAssetProviderType:
-    m_AssemblyName: 
-    m_ClassName: 
+    m_AssemblyName: Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_ClassName: UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider
   m_AssetBundleProviderType:
-    m_AssemblyName: 
-    m_ClassName: 
+    m_AssemblyName: Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_ClassName: UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider
   m_IgnoreUnsupportedFilesInBuild: 0
   m_UniqueBundleIds: 0
   m_EnableJsonCatalog: 0
