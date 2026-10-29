@@ -28,6 +28,8 @@ namespace Assets._Project.Scripts.Player.States
 
         public PlayerState State => PlayerState.Door;
 
+        public event Action<PlayerActionMessage> Actioned;
+
         public bool Paused
         {
             get => _isPaused;

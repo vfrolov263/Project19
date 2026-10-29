@@ -13,6 +13,7 @@ namespace Assets._Project.Scripts.Gameplay.Rules
         private Dictionary<ITriggerHandler, HashSet<string>> _progressRules = new();
         private HashSet<string> _allTriggers = new();
         private HashSet<string> _collectedTriggers = new();
+        private Dictionary<string, PlayerAction>  _triggersDictionary = new();
 
         public ProgressController(PlayerController playerController)
         {
@@ -37,7 +38,7 @@ namespace Assets._Project.Scripts.Gameplay.Rules
             else
                 _progressRules.Add(triggerHandler, triggerNames.ToHashSet());
 
-            _allTriggers.Concat(triggerNames);
+            _allTriggers.UnionWith(triggerNames);
         }
 
         public void Dispose()
@@ -45,20 +46,32 @@ namespace Assets._Project.Scripts.Gameplay.Rules
             _playerController.Actioned -= OnPlayerActioned;
         }
 
+        public void AddTriggersDictionary(string trigger, PlayerAction action)
+        {
+            _triggersDictionary.TryAdd(trigger, action);
+        }
+
+        public void AddTriggersDictionary(Dictionary<string, PlayerAction> triggersDictionary)
+        {
+            foreach (var trigger in triggersDictionary)
+            {
+                AddTriggersDictionary(trigger.Key, trigger.Value);
+            }
+        }
+
         private void OnPlayerActioned(PlayerActionMessage msg)
         {
-            switch (msg.ActionType)
-            {
-                case PlayerAction.SelectInteractable:
-                    if (_allTriggers.Contains(msg.Interactable.Name));
-                    {
-                        _collectedTriggers.Add(msg.Interactable.Name);
-                        CheckForTriggerDone();
-                    }
+            if (!_triggersDictionary.TryGetValue(msg.Interactable != null ? 
+                msg.Interactable.Name : "non_interactable", out PlayerAction action))
+                action = PlayerAction.SelectInteractable;
 
-                    break;
-                default:
-                    break;
+            if (msg.ActionType == action)
+            {
+                if (_allTriggers.Contains(msg.Interactable.Name))
+                {
+                    _collectedTriggers.Add(msg.Interactable.Name);
+                    CheckForTriggerDone();
+                }
             }
         }
 

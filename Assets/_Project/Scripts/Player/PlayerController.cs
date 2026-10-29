@@ -94,7 +94,7 @@ namespace Assets._Project.Scripts.Player
             if (_currentState != null && _currentState.State == state)
                 return;
 
-            _currentState?.Dispose();
+            ClearCurrentState();
 
             _currentState = state switch
             {
@@ -103,7 +103,7 @@ namespace Assets._Project.Scripts.Player
                 _ => throw new ArgumentException("Unknown player state"),
             };
 
-            _currentState?.Start();
+            StartCurrentState();
         }
 
         /// <remarks>
@@ -118,11 +118,10 @@ namespace Assets._Project.Scripts.Player
             if (_currentState != null && _currentState.State == state.State)
                 return;
 
-            _currentState?.Dispose();
+            ClearCurrentState();
             _currentState = state;
-            _currentState.Start();
+            StartCurrentState();
         }
-
 
         public void CheckPerception()
         {
@@ -150,6 +149,24 @@ namespace Assets._Project.Scripts.Player
             _clueController.SayComment(comment);
         }
 
+        private void StartCurrentState()
+        {
+            if (_currentState == null)
+                return;
+
+            _currentState.Actioned += OnActionedFromState;
+            _currentState.Start();
+        }
+
+        private void ClearCurrentState()
+        {
+            if (_currentState == null)
+                return;
+
+            _currentState.Actioned -= OnActionedFromState;
+            _currentState.Dispose();
+        }
+
         private void OnInteractableSelected(IInteractable interactable)
         {
             _clueController.ShowClue(interactable.Name);
@@ -159,6 +176,11 @@ namespace Assets._Project.Scripts.Player
         private void OnInteractableDeselected()
         {
             _clueController.HideClue();
+        }
+
+        private void OnActionedFromState(PlayerActionMessage msg)
+        {
+            Actioned?.Invoke(msg);
         }
 
 

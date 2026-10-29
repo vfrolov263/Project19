@@ -17,6 +17,7 @@ namespace Assets._Project.Scripts.Player.States
     public interface IPlayerState : IDisposable, IPausable
     {
         public PlayerState State { get; }
+        public event Action<PlayerActionMessage> Actioned;
         void Start() {}
         void Stop() {}
         void OnUsed(IInteractable interactable = null) {}

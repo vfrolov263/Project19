@@ -15,6 +15,8 @@ public class GameplayEntryPoint : MonoBehaviour, IStartable
 {
     [SerializeField]
     private ProgressConfig _progressConfig;
+    [SerializeField]
+    private TriggersConfig _triggersConfig;
 
     [SerializeField]
     private List<BindingEntity> _bindingEntities;
@@ -50,6 +52,8 @@ public class GameplayEntryPoint : MonoBehaviour, IStartable
             if (handler != null)
                 _progressController.AddProgressRule(handler, rule.triggers);
         }
+
+        _progressController.AddTriggersDictionary(_triggersConfig.GetTriggersDictionary());
     }
 
     private void OnDestroy()

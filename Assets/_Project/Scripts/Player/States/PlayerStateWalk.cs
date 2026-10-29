@@ -1,3 +1,4 @@
+using System;
 using Assets._Project.Scripts.Gameplay.Characters;
 using Assets._Project.Scripts.Gameplay.Pausable;
 using Assets._Project.Scripts.Gameplay.Props;
@@ -29,6 +30,8 @@ namespace Assets._Project.Scripts.Player.States
                 _glasses.Paused = value;
             }
         }
+
+        public event Action<PlayerActionMessage> Actioned;
 
         public PlayerState State => PlayerState.Walk;
 
@@ -89,6 +92,9 @@ namespace Assets._Project.Scripts.Player.States
                         break;
                 }
             }
+
+            if (interactable != null)
+                Actioned?.Invoke(new() { Interactable = interactable, ActionType = PlayerAction.Interact });
         }
 
         private void OnSwitched()

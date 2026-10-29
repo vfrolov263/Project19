@@ -1,6 +1,7 @@
 using Assets._Project.Scripts.Gameplay.Pausable;
 using Assets._Project.Scripts.Player.Controlls;
 using Assets._Project.Scripts.Player.Interaction;
+using System;
 using UnityEngine;
 
 namespace Assets._Project.Scripts.Player.States
@@ -15,6 +16,8 @@ namespace Assets._Project.Scripts.Player.States
         private bool _isPaused;
 
         public virtual PlayerState State => PlayerState.Examine;
+
+        public event Action<PlayerActionMessage> Actioned;
 
         public bool Paused
         {
