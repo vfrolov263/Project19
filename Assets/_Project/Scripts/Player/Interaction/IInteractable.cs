@@ -11,6 +11,8 @@ namespace Assets._Project.Scripts.Player.Interaction
         event Action ExitRequested;
 
         bool HasToInteract => true;
+
+        bool HasToExamine => true;
         
         bool IsNeedPointer  => false;
 

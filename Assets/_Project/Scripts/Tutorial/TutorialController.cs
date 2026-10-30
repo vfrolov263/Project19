@@ -38,8 +38,8 @@ namespace Assets._Project.Scripts.Tutorial
             
             _clues = new()
             {
-                {ClueType.Interact, 2},
-                {ClueType.ExitInteract, 2},
+                {ClueType.Interact, -1},
+                {ClueType.ExitInteract, -1},
                 {ClueType.UseGlasses, 1}
             };
 
@@ -62,14 +62,16 @@ namespace Assets._Project.Scripts.Tutorial
                 return;
             
             HideClue();
+            bool isInteractable = msg.Interactable != null && msg.Interactable.HasToInteract;
 
-            if (msg.ActionType == PlayerAction.SelectInteractable && 
-                msg.Interactable != null &&
-                msg.Interactable.HasToInteract)
+            if (!isInteractable)
+                return;
+
+            if (msg.ActionType == PlayerAction.SelectInteractable)
             {
                 ShowClue(ClueType.Interact);
             }
-            else if (msg.ActionType == PlayerAction.Interact)
+            else if (msg.ActionType == PlayerAction.Interact && msg.Interactable.HasToExamine)
             {
                 ShowClue(ClueType.ExitInteract);
                 _hideCondition = IsExitInteractClueHideConditionSatisfied;

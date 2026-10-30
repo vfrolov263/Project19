@@ -11,7 +11,9 @@ namespace Assets._Project.Scripts.Gameplay.Props
         [field: SerializeField]
         public string Name { get; private set; }
         [field: SerializeField]
-        private bool HasToExamine = true;
+        public bool HasToExamine { get; private set; }  = true;
+        [field: SerializeField]
+        public bool HasToInteract { get; private set; } = true;
         [field: SerializeField]
         public float InteractionDistance {get; private set; } = Settings.Settings.DEFAULT_INTERACTION_DISTANCE;
         [field: SerializeField]

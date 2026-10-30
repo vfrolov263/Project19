@@ -1614,7 +1614,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Gameplay.Props.SimpleInteractable
   <Name>k__BackingField: "\u041F\u0438\u0441\u044C\u043C\u043E"
-  HasToExamine: 1
+  <HasToExamine>k__BackingField: 1
+  <HasToInteract>k__BackingField: 1
   <InteractionDistance>k__BackingField: 1.8
   _camera: {fileID: 1181641350}
   _hasToActivateObject: 0
@@ -4769,7 +4770,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Gameplay.Props.SimpleInteractable
   <Name>k__BackingField: "\u0413\u0430\u0437\u0435\u0442\u0430"
-  HasToExamine: 1
+  <HasToExamine>k__BackingField: 1
+  <HasToInteract>k__BackingField: 1
   <InteractionDistance>k__BackingField: 1.8
   _camera: {fileID: 535945147}
   _hasToActivateObject: 0
@@ -6149,7 +6151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Gameplay.Props.PhoneInteractable
   <Name>k__BackingField: "\u0422\u0435\u043B\u0435\u0444\u043E\u043D"
-  HasToExamine: 1
+  <HasToExamine>k__BackingField: 1
+  <HasToInteract>k__BackingField: 1
   <InteractionDistance>k__BackingField: 1.8
   _camera: {fileID: 205736183}
   _hasToActivateObject: 0
@@ -6764,7 +6767,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Gameplay.Props.SimpleInteractable
   <Name>k__BackingField: "\u041F\u043B\u0430\u043A\u0430\u0442"
-  HasToExamine: 1
+  <HasToExamine>k__BackingField: 1
+  <HasToInteract>k__BackingField: 1
   <InteractionDistance>k__BackingField: 1.8
   _camera: {fileID: 460473544}
   _hasToActivateObject: 0
@@ -7115,7 +7119,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Gameplay.Props.SimpleInteractable
   <Name>k__BackingField: "\u0413\u0430\u0437\u0435\u0442\u0430"
-  HasToExamine: 1
+  <HasToExamine>k__BackingField: 1
+  <HasToInteract>k__BackingField: 1
   <InteractionDistance>k__BackingField: 1.8
   _camera: {fileID: 535945147}
   _hasToActivateObject: 0
@@ -13235,7 +13240,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Gameplay.Characters.CharacterInteractable
   <Name>k__BackingField: "\u0422\u0435\u043B\u0435\u0444\u043E\u043D"
-  HasToExamine: 1
+  <HasToExamine>k__BackingField: 1
+  <HasToInteract>k__BackingField: 1
   <InteractionDistance>k__BackingField: 1.8
   _camera: {fileID: 205736183}
   _hasToActivateObject: 0
@@ -13254,7 +13260,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Gameplay.Characters.CharacterInteractable
   <Name>k__BackingField: "\u0422\u0435\u043B\u0435\u0444\u043E\u043D"
-  HasToExamine: 1
+  <HasToExamine>k__BackingField: 1
+  <HasToInteract>k__BackingField: 1
   <InteractionDistance>k__BackingField: 1.8
   _camera: {fileID: 205736183}
   _hasToActivateObject: 0
@@ -13547,7 +13554,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Gameplay.Props.SimpleInteractable
   <Name>k__BackingField: "\u0427\u044C\u0438-\u0442\u043E \u0438\u0441\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u043D\u0438\u044F"
-  HasToExamine: 1
+  <HasToExamine>k__BackingField: 1
+  <HasToInteract>k__BackingField: 1
   <InteractionDistance>k__BackingField: 3
   _camera: {fileID: 913464395}
   _hasToActivateObject: 0
@@ -13713,7 +13721,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Gameplay.Props.SimpleInteractable
   <Name>k__BackingField: "\u041F\u043B\u0430\u043A\u0430\u0442"
-  HasToExamine: 1
+  <HasToExamine>k__BackingField: 1
+  <HasToInteract>k__BackingField: 1
   <InteractionDistance>k__BackingField: 1.8
   _camera: {fileID: 460473544}
   _hasToActivateObject: 0
@@ -16187,7 +16196,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Gameplay.Props.SimpleInteractable
   <Name>k__BackingField: "\u0424\u043E\u0442\u043E"
-  HasToExamine: 1
+  <HasToExamine>k__BackingField: 1
+  <HasToInteract>k__BackingField: 1
   <InteractionDistance>k__BackingField: 4
   _camera: {fileID: 0}
   _hasToActivateObject: 0
@@ -18430,7 +18440,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Gameplay.Props.SimpleInteractable
   <Name>k__BackingField: "\u0411\u0440\u043E\u0448\u044C"
-  HasToExamine: 1
+  <HasToExamine>k__BackingField: 1
+  <HasToInteract>k__BackingField: 1
   <InteractionDistance>k__BackingField: 1.8
   _camera: {fileID: 0}
   _hasToActivateObject: 0
@@ -22249,7 +22260,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Gameplay.Props.SimpleInteractable
   <Name>k__BackingField: "\u041D\u0430\u0434\u0435\u044E\u0441\u044C, \u044D\u0442\u043E
     \u043A\u0435\u0442\u0447\u0443\u043F."
-  HasToExamine: 0
+  <HasToExamine>k__BackingField: 0
+  <HasToInteract>k__BackingField: 0
   <InteractionDistance>k__BackingField: 1.8
   _camera: {fileID: 0}
   _hasToActivateObject: 0
@@ -22912,7 +22924,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Gameplay.Props.SimpleInteractable
   <Name>k__BackingField: "\u041F\u0438\u0441\u044C\u043C\u043E"
-  HasToExamine: 1
+  <HasToExamine>k__BackingField: 1
+  <HasToInteract>k__BackingField: 1
   <InteractionDistance>k__BackingField: 1.8
   _camera: {fileID: 1181641350}
   _hasToActivateObject: 0
@@ -23446,7 +23459,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Gameplay.Props.SimpleInteractable
   <Name>k__BackingField: "\u041B\u043E\u0440\u043D\u0435\u0442?"
-  HasToExamine: 0
+  <HasToExamine>k__BackingField: 0
+  <HasToInteract>k__BackingField: 1
   <InteractionDistance>k__BackingField: 1.8
   _camera: {fileID: 0}
   _hasToActivateObject: 0
@@ -25117,7 +25131,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Gameplay.Props.SimpleInteractable
   <Name>k__BackingField: "\u0424\u043E\u0442\u043E"
-  HasToExamine: 1
+  <HasToExamine>k__BackingField: 1
+  <HasToInteract>k__BackingField: 1
   <InteractionDistance>k__BackingField: 4
   _camera: {fileID: 0}
   _hasToActivateObject: 0
@@ -27781,7 +27796,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Gameplay.Props.SimpleInteractable
   <Name>k__BackingField: "\u0421\u0442\u0440\u0430\u043D\u043D\u0430\u044F \u043A\u043D\u0438\u0433\u0430"
-  HasToExamine: 0
+  <HasToExamine>k__BackingField: 0
+  <HasToInteract>k__BackingField: 1
   <InteractionDistance>k__BackingField: 1.8
   _camera: {fileID: 0}
   _hasToActivateObject: 0

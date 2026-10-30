@@ -30,6 +30,8 @@ namespace Assets._Project.Scripts.Gameplay.Props
 
         public bool IsOpened => _doorController.State == DoorState.OpenedBack || _doorController.State == DoorState.OpenedFront;
 
+        public bool HasToExamine => false;
+
         private Collider _collider;
         private CinemachineBrain _camBrain;
 
