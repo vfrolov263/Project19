@@ -21,3 +21,6 @@ MonoBehaviour:
   - handlerName: SecretDoor
     triggers:
     - "\u0421\u0442\u0440\u0430\u043D\u043D\u0430\u044F \u043A\u043D\u0438\u0433\u0430"
+  - handlerName: RemoveGlasses
+    triggers:
+    - "\u041B\u043E\u0440\u043D\u0435\u0442?"

@@ -15,6 +15,8 @@ namespace Assets._Project.Scripts.Gameplay.Rules
         private HashSet<string> _collectedTriggers = new();
         private Dictionary<string, PlayerAction>  _triggersDictionary = new();
 
+        public event Action<string> Progressed;
+
         public ProgressController(PlayerController playerController)
         {
             _playerController = playerController;
@@ -86,13 +88,14 @@ namespace Assets._Project.Scripts.Gameplay.Rules
                     Debug.Log($"{rule.Key.Name} execute.");
                     rule.Key.Execute();
                     _comletedHandlers.Add(rule.Key);
+                    Progressed?.Invoke(rule.Key.Name);
                 }
             }
 
             foreach (var ruleKey in _comletedHandlers)
             {
                 _progressRules.Remove(ruleKey);
-                _playerController.SayComment("Кажись телефон звонит...");
+                //_playerController.SayComment("Кажись телефон звонит...");
             }
         }
     }

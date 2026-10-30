@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterSignalsInterfaceTarget: {fileID: 2834963409570865590}
-  walkBobMagnitude: 0.04
+  walkBobMagnitude: 0.1
   runBobMagnitude: 0.1
   bobCurve:
     serializedVersion: 2
@@ -240,7 +240,7 @@ CharacterController:
   m_Height: 1.8
   m_Radius: 0.4
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.04
   m_SkinWidth: 0.08
   m_MinMoveDistance: 1e-11
   m_Center: {x: 0, y: 0, z: 0}
@@ -257,11 +257,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstPersonControllerInput: {fileID: 1712361634907970074}
-  walkSpeed: 2
-  runSpeed: 4
+  walkSpeed: 2.5
+  runSpeed: 2.5
   jumpForceMagnitude: 0
   strideLength: 4.5
-  stickToGroundForceMagnitude: 80
+  stickToGroundForceMagnitude: 15
   minViewAngle: -80
   maxViewAngle: 60
 --- !u!114 &1712361634907970074

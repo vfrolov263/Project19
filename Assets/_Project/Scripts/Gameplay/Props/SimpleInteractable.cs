@@ -18,6 +18,8 @@ namespace Assets._Project.Scripts.Gameplay.Props
         private CinemachineCamera _camera;
         [field: SerializeField]
         private bool _hasToActivateObject;
+        [field: SerializeField]
+        public bool IsNeedPointer { get; private set; }
         private CinemachineBrain _camBrain;
         private Collider _collider;
 

@@ -10,6 +10,10 @@ namespace Assets._Project.Scripts.Player.Interaction
 
         event Action ExitRequested;
 
+        bool HasToInteract => true;
+        
+        bool IsNeedPointer  => false;
+
         bool Interact();
 
         void ExitInteraction(Action onDone = null) {}

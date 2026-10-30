@@ -79,6 +79,7 @@ namespace Assets._Project.Scripts.Player.States
 
             if (_interactionHandler.TryUse(out IInteractable interactable))
             {
+                Actioned?.Invoke(new() { Interactable = interactable, ActionType = PlayerAction.Interact });
                 switch (interactable)
                 {
                     case DoorInteractable door:
@@ -92,14 +93,13 @@ namespace Assets._Project.Scripts.Player.States
                         break;
                 }
             }
-
-            if (interactable != null)
+            else if (interactable != null)
                 Actioned?.Invoke(new() { Interactable = interactable, ActionType = PlayerAction.Interact });
         }
 
         private void OnSwitched()
         {
-            if (_glasses.IsInMotion)
+            if (!_playerController.HasGlasses || _glasses.IsInMotion)
                 return;
 
             _glasses.IsOn = !_glasses.IsOn;

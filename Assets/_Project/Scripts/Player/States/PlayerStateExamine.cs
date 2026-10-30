@@ -47,8 +47,12 @@ namespace Assets._Project.Scripts.Player.States
             _inputController.CharacterControllerActivity = false;
             _inputController.ExamineControllerActivity = true;
             Paused = _playerController.Paused;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+
+            if (_interactable.IsNeedPointer)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
 
             // if (_interactable != null)
             // {
@@ -85,6 +89,7 @@ namespace Assets._Project.Scripts.Player.States
         {
             if (_interactable != null)
             {
+                Actioned?.Invoke(new() { Interactable = _interactable, ActionType = PlayerAction.ExitInteract });
                 _interactable.ExitRequested -= OnExitRequested;
                 _interactable.ExitInteraction(() => _playerController.ChangeState(PlayerState.Walk));
             }

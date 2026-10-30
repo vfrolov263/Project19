@@ -2,6 +2,7 @@ using System;
 using Assets._Project.Scripts.Gameplay.Pausable;
 using Assets._Project.Scripts.Player.Controlls;
 using Assets._Project.Scripts.Player.Glasses;
+using Assets._Project.Scripts.Player.Helpers;
 using Assets._Project.Scripts.Player.Interaction;
 using Assets._Project.Scripts.Player.States;
 using Assets._Project.Scripts.Player.View;
@@ -41,6 +42,9 @@ namespace Assets._Project.Scripts.Player
         private CinemachineCamera _defaultCamera;
         private ClueController _clueController;
         private Transform _transform;
+        public Action Disposed;
+
+        public bool HasGlasses { get; set; }
 
         // public PlayerController(FirstPersonController fpController, FirstPersonInputController addController,
         //     InteractionHandler interactionHandler, GlassesController glasses)
@@ -81,6 +85,7 @@ namespace Assets._Project.Scripts.Player
 
         public void Dispose()
         {
+            Disposed?.Invoke();
             _interactionHandler.Selected -= OnInteractableSelected;
             _interactionHandler.Deselected -= OnInteractableDeselected;
             _currentState.Dispose();
@@ -176,6 +181,7 @@ namespace Assets._Project.Scripts.Player
         private void OnInteractableDeselected()
         {
             _clueController.HideClue();
+            Actioned?.Invoke(new() { ActionType = PlayerAction.DeselectInteractable, Interactable = null });
         }
 
         private void OnActionedFromState(PlayerActionMessage msg)
