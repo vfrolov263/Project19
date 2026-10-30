@@ -22,10 +22,13 @@ namespace Assets._Project.Scripts.Gameplay.Rules.EventsCascade
 
         private void OnEnable()
         {
-            foreach (var gameEvent in _eventsQueue)
-            {
-                gameEvent.Finished += OnFinished;
-            }
+            if (_eventsQueue.Count > 0)
+                _eventsQueue.First().Finished += OnFinished;
+            
+            // foreach (var gameEvent in _eventsQueue)
+            // {
+            //     gameEvent.Finished += OnFinished;
+            // }
         }
 
         private void OnDisable()
@@ -41,7 +44,11 @@ namespace Assets._Project.Scripts.Gameplay.Rules.EventsCascade
             _eventsQueue.Dequeue().Finished -= OnFinished;
 
             if (_eventsQueue.Count > 0)
-                _eventsQueue.Peek().Start();
+            {
+                var gameEvent = _eventsQueue.Peek();
+                gameEvent.Finished += OnFinished;
+                gameEvent.Start();
+            }
         }
     }
 }

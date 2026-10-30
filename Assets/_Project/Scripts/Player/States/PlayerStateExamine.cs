@@ -37,6 +37,7 @@ namespace Assets._Project.Scripts.Player.States
             _playerController = playerController;
             _inputController = inputController;   
             _interactable = interactable;
+            _interactable.ExitRequested += OnExitRequested;
         }
 
         public void Dispose() => Stop();
@@ -75,10 +76,16 @@ namespace Assets._Project.Scripts.Player.States
         { 
         }
 
+        private void OnExitRequested()
+        {
+            OnExited();
+        }
+
         protected virtual void OnExited()
         {
             if (_interactable != null)
             {
+                _interactable.ExitRequested -= OnExitRequested;
                 _interactable.ExitInteraction(() => _playerController.ChangeState(PlayerState.Walk));
             }
         }

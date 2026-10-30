@@ -16,8 +16,12 @@ namespace Assets._Project.Scripts.Gameplay.Props
         public float InteractionDistance {get; private set; } = Settings.Settings.DEFAULT_INTERACTION_DISTANCE;
         [field: SerializeField]
         private CinemachineCamera _camera;
+        [field: SerializeField]
+        private bool _hasToActivateObject;
         private CinemachineBrain _camBrain;
         private Collider _collider;
+
+        public virtual event Action ExitRequested;
 
         protected bool IsInTransition => _camBrain != null && _camBrain.IsBlending;
 
@@ -47,7 +51,12 @@ namespace Assets._Project.Scripts.Gameplay.Props
                 return false;
 
             if (_camera != null)
+            {
                 _camera.enabled = true;
+
+                if (_hasToActivateObject)
+                    _camera.gameObject.SetActive(true);
+            }
 
             if (_collider != null)
                 _collider.enabled = false;
@@ -55,7 +64,7 @@ namespace Assets._Project.Scripts.Gameplay.Props
             return true;
         }
 
-        public void ExitInteraction(Action onDone = null) => _ = ExitRoutine(onDone);
+        public virtual void ExitInteraction(Action onDone = null) => _ = ExitRoutine(onDone);
         
         public void Select()
         {
@@ -67,7 +76,12 @@ namespace Assets._Project.Scripts.Gameplay.Props
             OnExit();
 
             if (_camera != null)
+            {
                 _camera.enabled = false;
+
+                if (_hasToActivateObject)
+                    _camera.gameObject.SetActive(false);
+            }
                 
             await Awaitable.NextFrameAsync(destroyCancellationToken);
 

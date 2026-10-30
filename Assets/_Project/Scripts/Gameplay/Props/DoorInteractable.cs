@@ -33,6 +33,8 @@ namespace Assets._Project.Scripts.Gameplay.Props
         private Collider _collider;
         private CinemachineBrain _camBrain;
 
+        public event Action ExitRequested;
+
         private void Awake()
         {
             _collider = GetComponent<Collider>();

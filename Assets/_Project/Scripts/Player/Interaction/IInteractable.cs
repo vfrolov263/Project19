@@ -8,6 +8,8 @@ namespace Assets._Project.Scripts.Player.Interaction
 
         string Name { get => ""; }
 
+        event Action ExitRequested;
+
         bool Interact();
 
         void ExitInteraction(Action onDone = null) {}
