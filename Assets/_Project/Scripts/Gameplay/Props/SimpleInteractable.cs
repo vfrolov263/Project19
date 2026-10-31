@@ -27,6 +27,10 @@ namespace Assets._Project.Scripts.Gameplay.Props
 
         public virtual event Action ExitRequested;
 
+        public virtual bool HasToDeepExamine => false;
+
+        public virtual bool HasManualExit => true;
+
         protected bool IsInTransition => _camBrain != null && _camBrain.IsBlending;
 
         protected virtual void Awake()

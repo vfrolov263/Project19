@@ -20,6 +20,8 @@ namespace Assets._Project.Scripts.Gameplay.Props
 
         private CharacterInteractable _dialogue;
 
+        public override bool HasManualExit => false;
+
         public override bool Interact()
         {
             if (_dialogues.Count == 0)

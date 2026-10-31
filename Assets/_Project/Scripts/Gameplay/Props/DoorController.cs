@@ -199,5 +199,18 @@ namespace Assets._Project.Scripts.Gameplay.Props
                 _doorTransform.localRotation = doorController.GetDoorTransform().localRotation;
             }
         }
+
+
+        // For playtest
+        [SerializeField]
+        private AudioSource _audioSource;
+        [SerializeField]
+        AudioClip _openSound, _closeSound, _lockedSound;
+
+        public void PlayOpenSound() => _audioSource.PlayOneShot(_openSound);
+
+        public void PlayCloseSound() => _audioSource.PlayOneShot(_closeSound);
+
+        public void PlayLockedSound() => _audioSource.PlayOneShot(_lockedSound);
     }
 }

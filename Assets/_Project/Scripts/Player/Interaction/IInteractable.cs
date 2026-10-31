@@ -13,6 +13,10 @@ namespace Assets._Project.Scripts.Player.Interaction
         bool HasToInteract => true;
 
         bool HasToExamine => true;
+
+        bool HasToDeepExamine => false;
+
+        bool HasManualExit => true;
         
         bool IsNeedPointer  => false;
 

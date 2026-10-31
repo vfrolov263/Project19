@@ -21,11 +21,17 @@ namespace  Assets._Project.Scripts.Gameplay.Common
         {
             Started?.Invoke(this);
             StartCoroutine(AwaitRoutine());
+
+            if (_objToLiveWhileWaiting != null)
+                _objToLiveWhileWaiting.SetActive(true);
         }
 
         private void OnDisable()
         {
             Finished?.Invoke(this);
+
+            if (_objToLiveWhileWaiting != null)
+                Destroy(_objToLiveWhileWaiting);
         }
 
         private IEnumerator AwaitRoutine()
@@ -33,5 +39,9 @@ namespace  Assets._Project.Scripts.Gameplay.Common
             yield return new WaitForSeconds(_delay);
             enabled = false;
         }
+
+        // For playtest
+        [SerializeField]
+        private GameObject _objToLiveWhileWaiting;
     }
 }

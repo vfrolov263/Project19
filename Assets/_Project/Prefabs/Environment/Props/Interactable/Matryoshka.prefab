@@ -419,10 +419,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Gameplay.Props.SimpleInteractable
   <Name>k__BackingField: "\u041C\u0430\u0442\u0440\u0435\u0448\u043A\u0430"
-  HasToExamine: 1
+  <HasToExamine>k__BackingField: 1
+  <HasToInteract>k__BackingField: 1
   <InteractionDistance>k__BackingField: 1.8
   _camera: {fileID: 5120861186436679742}
   _hasToActivateObject: 1
+  <IsNeedPointer>k__BackingField: 0
 --- !u!1 &7717179594700761530
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,6 +472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Gameplay.Common.ObjectTwoWayMoverToTarget
   _target: {x: -0.03, y: 0, z: 0}
   _duration: 2
+  _isAutoReturn: 0
 --- !u!1001 &1161144019064721972
 PrefabInstance:
   m_ObjectHideFlags: 0

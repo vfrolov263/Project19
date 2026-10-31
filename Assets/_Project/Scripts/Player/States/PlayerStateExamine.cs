@@ -71,13 +71,28 @@ namespace Assets._Project.Scripts.Player.States
 
         protected virtual void Continue()
         {
-            _inputController.Examined += OnExamined;
-            _inputController.Exited += OnExited;
+            if (_interactable.HasToDeepExamine)
+                _inputController.Examined += OnExamined;
+
+            if (_interactable.HasManualExit)
+                _inputController.Exited += OnExited;
+
             _isPaused = false;
         }
 
         private void OnExamined()
-        { 
+        {
+            Ray ray = Camera.main.ScreenPointToRay(_inputController.PointerPosition);
+
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+
+                if (interactable != null && interactable.HasToInteract)
+                {
+                    interactable.Interact();
+                }
+            }
         }
 
         private void OnExitRequested()

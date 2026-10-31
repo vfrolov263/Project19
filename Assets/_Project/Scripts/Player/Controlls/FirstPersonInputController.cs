@@ -1,5 +1,6 @@
 ﻿#define ESC_STRONG_EXIT
 using System;
+using Assets._Project.Scripts.Tutorial;
 using DyrdaDev.FirstPersonController;
 using UniRx;
 using UniRx.Triggers;
@@ -27,6 +28,8 @@ namespace Assets._Project.Scripts.Player.Controlls
         public IObservable<Vector2> ExamineMove { get; private set; }
 
         public event Action Used, Switched, Examined, Exited;
+
+        public Vector2 PointerPosition => _controls.Examine.PointerPosition.ReadValue<Vector2>();
 
         #endregion
 
@@ -141,10 +144,24 @@ namespace Assets._Project.Scripts.Player.Controlls
 #if ESC_STRONG_EXIT
         private void Update()
         {
-            if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+            if (Keyboard.current != null)
             {
-                Debug.Log("Exit");
-                Application.Quit();
+                if (Keyboard.current.numpad3Key.wasPressedThisFrame)
+                    Application.Quit();
+                else if (Keyboard.current.numpad9Key.wasPressedThisFrame)
+                    Settings.Settings.ReloadGame();
+                else if (Keyboard.current.numpad7Key.wasPressedThisFrame)
+                {
+                    TutorialView tutorial = GameObject.FindFirstObjectByType<TutorialView>();
+                    
+                    if (tutorial != null)
+                    {
+                        Canvas canvas = tutorial.GetComponentInChildren<Canvas>();
+
+                        if (canvas != null)
+                            canvas.enabled = false;
+                    }
+                }
             }
         }   
 #endif

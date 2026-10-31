@@ -400,6 +400,16 @@ namespace Assets._Project.Scripts.Systems.Input
                     ""interactions"": """",
                     ""initialStateCheck"": false,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""PointerPosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""3e3b15bb-be8c-4bc9-8443-e3f85aa685c9"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -545,6 +555,28 @@ namespace Assets._Project.Scripts.Systems.Input
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ce38d898-3281-4958-9b77-fe956ef83798"",
+                    ""path"": ""<Pointer>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PointerPosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a8cfda92-a8e2-4aca-bbc8-9677e5027d71"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PointerPosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -564,6 +596,7 @@ namespace Assets._Project.Scripts.Systems.Input
             m_Examine_Use = m_Examine.FindAction("Use", throwIfNotFound: true);
             m_Examine_Exit = m_Examine.FindAction("Exit", throwIfNotFound: true);
             m_Examine_Move = m_Examine.FindAction("Move", throwIfNotFound: true);
+            m_Examine_PointerPosition = m_Examine.FindAction("PointerPosition", throwIfNotFound: true);
         }
 
         ~@PlayerInput()
@@ -799,6 +832,7 @@ namespace Assets._Project.Scripts.Systems.Input
         private readonly InputAction m_Examine_Use;
         private readonly InputAction m_Examine_Exit;
         private readonly InputAction m_Examine_Move;
+        private readonly InputAction m_Examine_PointerPosition;
         /// <summary>
         /// Provides access to input actions defined in input action map "Examine".
         /// </summary>
@@ -822,6 +856,10 @@ namespace Assets._Project.Scripts.Systems.Input
             /// Provides access to the underlying input action "Examine/Move".
             /// </summary>
             public InputAction @Move => m_Wrapper.m_Examine_Move;
+            /// <summary>
+            /// Provides access to the underlying input action "Examine/PointerPosition".
+            /// </summary>
+            public InputAction @PointerPosition => m_Wrapper.m_Examine_PointerPosition;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -857,6 +895,9 @@ namespace Assets._Project.Scripts.Systems.Input
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @PointerPosition.started += instance.OnPointerPosition;
+                @PointerPosition.performed += instance.OnPointerPosition;
+                @PointerPosition.canceled += instance.OnPointerPosition;
             }
 
             /// <summary>
@@ -877,6 +918,9 @@ namespace Assets._Project.Scripts.Systems.Input
                 @Move.started -= instance.OnMove;
                 @Move.performed -= instance.OnMove;
                 @Move.canceled -= instance.OnMove;
+                @PointerPosition.started -= instance.OnPointerPosition;
+                @PointerPosition.performed -= instance.OnPointerPosition;
+                @PointerPosition.canceled -= instance.OnPointerPosition;
             }
 
             /// <summary>
@@ -988,6 +1032,13 @@ namespace Assets._Project.Scripts.Systems.Input
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnMove(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "PointerPosition" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPointerPosition(InputAction.CallbackContext context);
         }
     }
 }

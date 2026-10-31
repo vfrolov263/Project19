@@ -35,7 +35,7 @@ namespace Assets._Project.Scripts.Gameplay.Props
         private Collider _collider;
         private CinemachineBrain _camBrain;
 
-        public event Action ExitRequested;
+        public event Action ExitRequested;        
 
         private void Awake()
         {
@@ -57,7 +57,11 @@ namespace Assets._Project.Scripts.Gameplay.Props
 
         private void OnOpened() => Opened?.Invoke();
 
-        private void OnClosed() => Closed?.Invoke();
+        private void OnClosed() 
+        {
+            Closed?.Invoke();
+            _doorController.PlayCloseSound();
+        }
 
         public bool Interact()
         {
@@ -67,6 +71,7 @@ namespace Assets._Project.Scripts.Gameplay.Props
             if (_doorController.IsLocked)
             {
                 _doorController.PullHandle();
+                _doorController.PlayLockedSound();
                 return false;
             }
                 
@@ -76,11 +81,13 @@ namespace Assets._Project.Scripts.Gameplay.Props
             if (_doorController.State == (IsFrontPusher ? DoorState.OpenedBack : DoorState.OpenedFront))
             {
                 _doorController.Close();
+                _doorController.PlayCloseSound();
                 NeedManualControl = false;
             }
             else
             {
                 _doorCamera.enabled = true;
+                _doorController.PlayOpenSound();
                 NeedManualControl = true;
             }
 

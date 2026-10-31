@@ -67,7 +67,7 @@ namespace Assets._Project.Scripts.Gameplay.Rules
                 msg.Interactable.Name : "non_interactable", out PlayerAction action))
                 action = PlayerAction.SelectInteractable;
 
-            if (msg.ActionType == action)
+            if (IsEqualActions(msg.ActionType, action))//msg.ActionType == action )
             {
                 if (_allTriggers.Contains(msg.Interactable.Name))
                 {
@@ -76,6 +76,9 @@ namespace Assets._Project.Scripts.Gameplay.Rules
                 }
             }
         }
+
+        private bool IsEqualActions(PlayerAction pAct, PlayerAction dAct) =>
+            (pAct == dAct) || (pAct == PlayerAction.Interact && dAct == PlayerAction.SelectInteractable);
 
         private void CheckForTriggerDone()
         {
