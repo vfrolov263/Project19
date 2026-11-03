@@ -1,11 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets._Project.Scripts.Player.Interaction;
-using Unity.Cinemachine;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using VContainer;
 
 namespace Assets._Project.Scripts.Gameplay.Props
 {

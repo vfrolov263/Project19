@@ -85,6 +85,10 @@ namespace Assets._Project.Scripts.Player.States
                     case DoorInteractable door:
                         _playerController.ChangeState(new PlayerStateDoor(_playerController, _inputController, door));
                         break;
+                    case InteractableSender doorSender:
+                        _playerController.ChangeState(new PlayerStateDoor(_playerController, _inputController,
+                            doorSender.Reciever as DoorInteractable));
+                        break;
                     case CharacterInteractable character:
                         _playerController.ChangeState(new PlayerStateTalk(_playerController, _inputController, character));
                         break;
