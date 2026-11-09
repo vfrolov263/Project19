@@ -10,9 +10,12 @@
   "localisation": {
     "ru": {
       "assets": "."
+    },
+    "en": {
+      "assets": "."
     }
   },
-  "baseLanguage": "ru",
+  "baseLanguage": "en",
   "compilerOptions": {
     "diagnosticsSeverity": {}
   }

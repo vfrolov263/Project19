@@ -3,11 +3,14 @@ using Assets._Project.Scripts.Player.Interaction;
 using Unity.Cinemachine;
 using UnityEngine;
 using VContainer;
+using UnityEngine.Localization;
 
 namespace Assets._Project.Scripts.Gameplay.Props
 {
     public class LockWheelInteractable : MonoBehaviour, IInteractable
-    {
+    {      
+        [field: SerializeField]
+        public string Id { get; private set; } = "door";
         public string Name => "";
         public bool HasToExamine => false;
         public bool HasToInteract => true;

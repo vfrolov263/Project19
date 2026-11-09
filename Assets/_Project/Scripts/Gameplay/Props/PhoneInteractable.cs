@@ -14,6 +14,8 @@ namespace Assets._Project.Scripts.Gameplay.Props
         private List<CharacterInteractable> _dialogues;
         [SerializeField]
         private AudioSource _ringtone;
+        [SerializeField]
+        private bool _isRemovableDialogues = true;
 
         public event Action<IEvent> Started, Finished, Interrupted;
         public override event Action ExitRequested;
@@ -40,8 +42,14 @@ namespace Assets._Project.Scripts.Gameplay.Props
 
         public override void ExitInteraction(Action onDone = null)
         {
-            if (_dialogues.Count == 0)
+            if (!_isRemovableDialogues || _dialogues.Count == 0)
                 base.ExitInteraction(onDone);
+        }
+
+        public void AddDialogue(CharacterInteractable dialogue)
+        {
+            if (_dialogue != null)
+                _dialogues.Add(dialogue);
         }
 
         void IEvent.Start()
@@ -79,10 +87,13 @@ namespace Assets._Project.Scripts.Gameplay.Props
         private void OnDialogueEnded()
         {
             _dialogue.DialogueEnded -= OnDialogueEnded;
-            _dialogues.RemoveAt(0);
+
+            if (_isRemovableDialogues)
+                _dialogues.RemoveAt(0);
+
             Finished?.Invoke(this);
 
-            if (_dialogues.Count == 0)
+            if (!_isRemovableDialogues || _dialogues.Count == 0)
                 ExitRequested?.Invoke();
         }
     }

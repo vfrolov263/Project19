@@ -4,6 +4,7 @@ using Assets._Project.Scripts.Player.Interaction;
 using Assets._Project.Scripts.Player.States;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Localization;
 
 namespace Assets._Project.Scripts.Gameplay.Props
 {
@@ -12,7 +13,12 @@ namespace Assets._Project.Scripts.Gameplay.Props
     {
         [SerializeField]
         private DoorController _doorController;
-        public string Name { get => "Ручка"; }
+
+        [field: SerializeField]
+        public string Id { get; private set; } = "door";
+        [SerializeField]
+        private LocalizedString _localName;
+        public string Name => _localName.GetLocalizedString();
         public bool NeedManualControl { get; private set; }
 
         public event Action Opened, Closed;

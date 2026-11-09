@@ -1,6 +1,7 @@
 using System;
 using Assets._Project.Scripts.Player.Interaction;
 using UnityEngine;
+using UnityEngine.Localization;
 
 namespace Assets._Project.Scripts.Gameplay.Props
 {
@@ -9,12 +10,14 @@ namespace Assets._Project.Scripts.Gameplay.Props
     {
         [SerializeField]
         private UnityEngine.Object _receiver;
-        [SerializeField]
-        private string _name;
-
         private IInteractable _interactableReceiver;
 
-        public string Name => _name;
+        [field: SerializeField]
+        public string Id { get; private set; } = "door";
+
+        [SerializeField]
+        private LocalizedString _localName;
+        public string Name => _localName.GetLocalizedString();
         public bool HasToExamine => _interactableReceiver.HasToExamine;
         public bool HasToInteract => _interactableReceiver.HasToInteract;
         public bool HasToDeepExamine => _interactableReceiver.HasToDeepExamine;

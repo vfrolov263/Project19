@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Interactable Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: Interactable
+  m_TableCollectionNameGuidString: cdadb034bcb61a840b9c4f16ca5e1313
+  m_Entries:
+  - m_Id: 5236936704
+    m_Key: INT_DOOR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53702119424
+    m_Key: INT_HANDLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 98967048192
+    m_Key: INT_PORTRAIT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 342920351744
+    m_Key: INT_NEWSPAPER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2171557203968
+    m_Key: INT_DRAWINGS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2358895792128
+    m_Key: INT_STRANGE_BOOK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2595488092160
+    m_Key: INT_BROOCH
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2815743578112
+    m_Key: INT_BATH_BLOOD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3074880262144
+    m_Key: INT_PHONE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3389318844416
+    m_Key: INT_LORGNETTE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3637822967808
+    m_Key: INT_LETTER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3822238126080
+    m_Key: INT_POSTER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4115306729472
+    m_Key: INT_MATRYOSHKA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4341895614464
+    m_Key: INT_LOCK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5037185388544
+    m_Key: INT_TORN_PAGE
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5338279784394260563
+  references:
+    version: 2
+    RefIds:
+    - rid: 5338279784394260563
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1794161861400

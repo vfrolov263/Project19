@@ -64,14 +64,14 @@ namespace Assets._Project.Scripts.Gameplay.Rules
         private void OnPlayerActioned(PlayerActionMessage msg)
         {
             if (!_triggersDictionary.TryGetValue(msg.Interactable != null ? 
-                msg.Interactable.Name : "non_interactable", out PlayerAction action))
+                msg.Interactable.Id : "non_interactable", out PlayerAction action))
                 action = PlayerAction.SelectInteractable;
 
             if (IsEqualActions(msg.ActionType, action))//msg.ActionType == action )
             {
-                if (_allTriggers.Contains(msg.Interactable.Name))
+                if (_allTriggers.Contains(msg.Interactable.Id))
                 {
-                    _collectedTriggers.Add(msg.Interactable.Name);
+                    _collectedTriggers.Add(msg.Interactable.Id);
                     CheckForTriggerDone();
                 }
             }
@@ -96,10 +96,7 @@ namespace Assets._Project.Scripts.Gameplay.Rules
             }
 
             foreach (var ruleKey in _comletedHandlers)
-            {
                 _progressRules.Remove(ruleKey);
-                //_playerController.SayComment("Кажись телефон звонит...");
-            }
         }
     }
 }

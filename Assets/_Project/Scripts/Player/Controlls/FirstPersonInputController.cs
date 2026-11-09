@@ -141,12 +141,16 @@ namespace Assets._Project.Scripts.Player.Controlls
             }
         }
 
+        public void BotCmdUse() => Used?.Invoke();
+
+        public void BotCmdSwitch() => Switched?.Invoke();
+
 #if ESC_STRONG_EXIT
         private void Update()
         {
             if (Keyboard.current != null)
             {
-                if (Keyboard.current.numpad3Key.wasPressedThisFrame)
+                if (Keyboard.current.escapeKey.wasPressedThisFrame)
                     Application.Quit();
                 else if (Keyboard.current.numpad9Key.wasPressedThisFrame)
                     Settings.Settings.ReloadGame();

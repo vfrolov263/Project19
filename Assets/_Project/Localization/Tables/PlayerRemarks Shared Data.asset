@@ -14,7 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
   m_TableCollectionName: PlayerRemarks
   m_TableCollectionNameGuidString: 24c647f79b7a15444b6bb7b07c42391f
-  m_Entries: []
+  m_Entries:
+  - m_Id: 3877715907174400
+    m_Key: PR_PHONE_FIRST
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3877884316868608
+    m_Key: PR_DOOR_CLOSED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3878101577621504
+    m_Key: PR_
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -6,6 +6,8 @@ namespace Assets._Project.Scripts.Player.Interaction
     {
         float InteractionDistance { get => Settings.Settings.DEFAULT_INTERACTION_DISTANCE; }
 
+        string Id { get; }
+
         string Name { get => ""; }
 
         event Action ExitRequested;

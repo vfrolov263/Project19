@@ -64,7 +64,7 @@ public class GameplayEntryPoint : MonoBehaviour, IStartable
         }
 
         _progressController.AddTriggersDictionary(_triggersConfig.GetTriggersDictionary());
-        _progressController.AddProgressRule(new GetGlassesTrigger(_playerController), "Лорнет?");
+        _progressController.AddProgressRule(new GetGlassesTrigger(_playerController), "lorgnette");
     }
 
     private void CreateCommentator()

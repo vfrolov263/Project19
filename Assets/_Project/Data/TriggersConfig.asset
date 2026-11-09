@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: TriggersConfig
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Gameplay.Rules.TriggerHandler.TriggersConfig
   _triggers:
-  - name: "\u0421\u0442\u0440\u0430\u043D\u043D\u0430\u044F \u043A\u043D\u0438\u0433\u0430"
+  - name: strange_book
     action: 2
-  - name: "\u041B\u043E\u0440\u043D\u0435\u0442?"
+  - name: lorgnette
+    action: 2
+  - name: home_final_letter
     action: 2

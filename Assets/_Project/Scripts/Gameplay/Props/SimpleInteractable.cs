@@ -2,6 +2,7 @@ using System;
 using Assets._Project.Scripts.Player.Interaction;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Localization;
 using VContainer;
 
 namespace Assets._Project.Scripts.Gameplay.Props
@@ -9,7 +10,10 @@ namespace Assets._Project.Scripts.Gameplay.Props
     public class SimpleInteractable : MonoBehaviour, IInteractable
     {
         [field: SerializeField]
-        public string Name { get; private set; }
+        public string Id { get; private set; }
+        [SerializeField]
+        private LocalizedString _localName;
+        public string Name => _localName != null ? _localName.GetLocalizedString() : "";
         [field: SerializeField]
         public bool HasToExamine { get; private set; }  = true;
         [field: SerializeField]

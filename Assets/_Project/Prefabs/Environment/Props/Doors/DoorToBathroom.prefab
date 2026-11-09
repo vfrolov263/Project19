@@ -373,7 +373,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Gameplay.Props.InteractableSender
   _receiver: {fileID: 8758201208596496040}
-  _name: "\u0414\u0432\u0435\u0440\u044C"
+  <Id>k__BackingField: door
+  _localName:
+    m_TableReference:
+      m_TableCollectionName: GUID:cdadb034bcb61a840b9c4f16ca5e1313
+    m_TableEntryReference:
+      m_KeyId: 5236936704
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &3418578710782002106
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,10 +877,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Gameplay.Props.DoorInteractable
   _doorController: {fileID: 3699239784027946012}
+  <Id>k__BackingField: door
+  _localName:
+    m_TableReference:
+      m_TableCollectionName: GUID:cdadb034bcb61a840b9c4f16ca5e1313
+    m_TableEntryReference:
+      m_KeyId: 53702119424
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   <OpenerPosition>k__BackingField: {fileID: 7204371130177640417}
   <CloserPosition>k__BackingField: {fileID: 4469886832794742558}
   _doorCamera: {fileID: 6988424716880161184}
   <IsFrontPusher>k__BackingField: 0
+  references:
+    version: 2
+    RefIds: []
 --- !u!136 &1901401842924988738
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1053,7 +1078,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Gameplay.Props.InteractableSender
   _receiver: {fileID: 8694546335538563891}
-  _name: "\u0414\u0432\u0435\u0440\u044C"
+  <Id>k__BackingField: door
+  _localName:
+    m_TableReference:
+      m_TableCollectionName: GUID:cdadb034bcb61a840b9c4f16ca5e1313
+    m_TableEntryReference:
+      m_KeyId: 5236936704
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &8222432400998837654
 GameObject:
   m_ObjectHideFlags: 0
@@ -1521,10 +1558,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Gameplay.Props.DoorInteractable
   _doorController: {fileID: 3699239784027946012}
+  <Id>k__BackingField: door
+  _localName:
+    m_TableReference:
+      m_TableCollectionName: GUID:cdadb034bcb61a840b9c4f16ca5e1313
+    m_TableEntryReference:
+      m_KeyId: 53702119424
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   <OpenerPosition>k__BackingField: {fileID: 4469886832794742558}
   <CloserPosition>k__BackingField: {fileID: 7204371130177640417}
   _doorCamera: {fileID: 884679876665241824}
   <IsFrontPusher>k__BackingField: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!136 &1344089055715560333
 CapsuleCollider:
   m_ObjectHideFlags: 0
