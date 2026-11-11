@@ -10,7 +10,7 @@ namespace Assets._Project.Scripts.Gameplay.Characters
         [SerializeField]
         private string _dialogueName;
         private DialogueRunner _dialogueRunner;
-
+        public override bool HasManualExit => false;
         public event Action DialogueEnded;
 
         protected override void Awake()

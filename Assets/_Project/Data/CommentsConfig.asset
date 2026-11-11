@@ -13,6 +13,26 @@ MonoBehaviour:
   m_Name: CommentsConfig
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Project.Scripts.Player.Helpers.CommentsConfig
   _comments:
-  - trigger: Phone
-    comment: "\u041A\u0442\u043E \u043C\u043E\u0436\u0435\u0442 \u0437\u0432\u043E\u043D\u0438\u0442\u044C
-      \u0432 \u0442\u0430\u043A\u043E\u0439 \u0447\u0430\u0441?"
+  - trigger: ClosedDoor
+    comment:
+      m_TableReference:
+        m_TableCollectionName: GUID:24c647f79b7a15444b6bb7b07c42391f
+      m_TableEntryReference:
+        m_KeyId: 3877884316868608
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - trigger: SecondPhone
+    comment:
+      m_TableReference:
+        m_TableCollectionName: GUID:24c647f79b7a15444b6bb7b07c42391f
+      m_TableEntryReference:
+        m_KeyId: 3878101577621504
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using Assets._Project.Scripts.Gameplay.Rules;
 using System.Collections.Generic;
+using UnityEngine.Localization;
 
 namespace Assets._Project.Scripts.Player.Helpers
 {
@@ -10,10 +11,10 @@ namespace Assets._Project.Scripts.Player.Helpers
         private PlayerController _playerController;
         private ProgressController _progressController;
 
-        private Dictionary<string, string> _comments;
+        private Dictionary<string, LocalizedString> _comments;
 
         public PlayerCommentator(PlayerController playerController, ProgressController progressController,
-            Dictionary<string, string> comments)
+            Dictionary<string, LocalizedString> comments)
         {
             _playerController = playerController;
             _progressController = progressController;
@@ -21,7 +22,7 @@ namespace Assets._Project.Scripts.Player.Helpers
             _playerController.Actioned += OnActioned;
             _playerController.Disposed += Dispose;
             _progressController.Progressed += OnProgressed;
-
+            GameGlobalProgressEvents.OnEvent += OnProgressed;
         }
 
         private void OnActioned(PlayerActionMessage msg)
@@ -31,9 +32,9 @@ namespace Assets._Project.Scripts.Player.Helpers
 
         private void OnProgressed(string trigger)
         {
-            if (_comments.TryGetValue(trigger, out string comment))
+            if (_comments.TryGetValue(trigger, out LocalizedString comment))
             {
-                _playerController.SayComment(comment);   
+                _playerController.SayComment(comment.GetLocalizedString());   
             }
         }
 
@@ -42,6 +43,7 @@ namespace Assets._Project.Scripts.Player.Helpers
             _playerController.Disposed -= Dispose;
             _playerController.Actioned -= OnActioned;
             _progressController.Progressed -= OnProgressed;
+            GameGlobalProgressEvents.OnEvent -= OnProgressed;
         }
     }
 }

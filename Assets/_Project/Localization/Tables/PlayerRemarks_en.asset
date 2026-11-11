@@ -26,6 +26,10 @@ MonoBehaviour:
     m_Localized: Closed.
     m_Metadata:
       m_Items: []
+  - m_Id: 3878101577621504
+    m_Localized: The phone is ringing.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

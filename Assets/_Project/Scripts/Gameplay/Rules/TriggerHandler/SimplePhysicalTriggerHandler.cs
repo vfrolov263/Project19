@@ -15,6 +15,7 @@ namespace Assets._Project.Scripts.Gameplay.Rules.TriggerHandler
                 _handler.Execute();
 
             Destroy(this);
+            GameGlobalProgressEvents.OnEvent?.Invoke(_handler.Name);
         }
     }
 }

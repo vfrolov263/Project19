@@ -25,3 +25,6 @@ MonoBehaviour:
   - handlerName: SecondPhoneTrigger
     triggers:
     - home_final_letter
+  - handlerName: Final
+    triggers:
+    - driver

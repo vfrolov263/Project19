@@ -1,4 +1,5 @@
 using System;
+using Assets._Project.Scripts.Gameplay.Rules;
 using Assets._Project.Scripts.Player;
 using Assets._Project.Scripts.Player.Interaction;
 using Assets._Project.Scripts.Player.States;
@@ -78,6 +79,7 @@ namespace Assets._Project.Scripts.Gameplay.Props
             {
                 _doorController.PullHandle();
                 _doorController.PlayLockedSound();
+                GameGlobalProgressEvents.OnEvent?.Invoke("ClosedDoor");
                 return false;
             }
                 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets._Project.Scripts.Player;
 using UnityEngine;
+using UnityEngine.Localization;
 
 namespace Assets._Project.Scripts.Player.Helpers
 {
@@ -13,13 +14,13 @@ namespace Assets._Project.Scripts.Player.Helpers
         private class CommentSet
         {
             public string trigger;
-            public string comment;
+            public LocalizedString comment;
         }
 
         [SerializeField]
         private List<CommentSet> _comments;
 
-        public Dictionary<string, string> GetCommentsDictionary() =>
+        public Dictionary<string, LocalizedString> GetCommentsDictionary() =>
             _comments != null ? _comments.ToDictionary(x => x.trigger, x => x.comment) : new();
     }
 }

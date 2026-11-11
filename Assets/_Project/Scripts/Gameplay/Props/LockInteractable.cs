@@ -14,7 +14,10 @@ namespace Assets._Project.Scripts.Gameplay.Props
         private GameObject _pipe;
 
         [SerializeField]
-        private GameObject _door;
+        private DoorController _door;
+
+        [SerializeField]
+        private Collider _handle;
 
         [SerializeField]
         private AudioSource _unlockSound;
@@ -45,8 +48,20 @@ namespace Assets._Project.Scripts.Gameplay.Props
                 Destroy(wheel.GetComponent<Collider>());
             }
 
+            ExitRequested?.Invoke();
+            _door.IsLocked = false;
+            _door.gameObject.SetActive(true);
+            _handle.enabled = true;
+
+            Rigidbody rb = gameObject.AddComponent<Rigidbody>();
+            rb.linearDamping = 10f;
+            rb = _pipe.AddComponent<Rigidbody>();
+            rb.linearDamping = 10f;
+            Destroy(_pipe, 4f);
+            Destroy(gameObject, 4f);
+
             // For playtest only
-            _unlockSound.Play();
+           /* _unlockSound.Play();
 
             ExitRequested?.Invoke();
             Rigidbody rb = gameObject.AddComponent<Rigidbody>();
@@ -65,7 +80,7 @@ namespace Assets._Project.Scripts.Gameplay.Props
             FinalStarter finalStarter = GameObject.FindFirstObjectByType<FinalStarter>();
 
             if (finalStarter != null)
-                finalStarter.StartFinal();
+                finalStarter.StartFinal();*/
         }
     }
 }

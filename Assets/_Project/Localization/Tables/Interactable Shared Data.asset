@@ -75,6 +75,10 @@ MonoBehaviour:
     m_Key: INT_TORN_PAGE
     m_Metadata:
       m_Items: []
+  - m_Id: 405948580487168
+    m_Key: INT_MAN
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

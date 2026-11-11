@@ -19,3 +19,5 @@ MonoBehaviour:
     action: 2
   - name: home_final_letter
     action: 2
+  - name: driver
+    action: 2
